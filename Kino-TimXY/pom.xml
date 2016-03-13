@@ -9,30 +9,32 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <junit.version>4.11</junit.version>
-        <mockito-core.version>1.9.5</mockito-core.version>
-        <spring.version>4.0.0.RELEASE</spring.version>
-
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <spring.version>4.1.1.RELEASE</spring.version>
+        <spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
         <slf4j.version>1.7.9</slf4j.version>
         <logback.version>1.0.13</logback.version>
         <mysql-connector.version>5.1.37</mysql-connector.version>
-        <eclipselink.version>2.5.0</eclipselink.version>
+        <hibernate.version>5.1.0.Final</hibernate.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
-            <scope>test</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
 
         <dependency>
@@ -80,40 +82,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>${eclipselink.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.3</version>
-        </dependency>
-
-
-        <!-- mail sendin dependencies -->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>4.1.8.RELEASE</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.4.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>2.3.1</version>
         </dependency>
 
     </dependencies>

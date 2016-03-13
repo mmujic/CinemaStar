@@ -1,14 +1,14 @@
 package kino.configuration;
 
-import kino.configuration.BeanConfiguration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import kino.model.ModelFactory;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+        ModelFactory modelFactory = ModelFactory.getInstance();
+        System.out.println(modelFactory.UserRepository().findByName("Kurt Cobain").get(0));
+
     }
 
 }
