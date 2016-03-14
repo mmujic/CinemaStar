@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Theater {
 
+    private static final long serialVersionUID = 123456782L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
