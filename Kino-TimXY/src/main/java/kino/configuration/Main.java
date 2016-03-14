@@ -1,9 +1,7 @@
 package kino.configuration;
 
 import kino.model.ModelFactory;
-import kino.model.entities.Comment;
-import kino.model.entities.Event;
-import kino.model.entities.User;
+import kino.model.entities.*;
 
 import java.util.Date;
 
@@ -55,6 +53,33 @@ public class Main {
         for (int i = 0; i < fromDB.getComments().size(); i++) {
             System.out.println(fromDB.getComments().get(i).getContent());
         }
+
+        Movie movie=new Movie();
+        movie.setDuration(12);
+        movie.setDescription("kjashas");
+        movie.setName("kjskd");
+        movie.setId(2);
+
+        modelFactory.MovieRepository().saveAndFlush(movie);
+
+        System.out.println(movie.getId());
+
+        Movie movie1= modelFactory.MovieRepository().getOne(movie.getId());
+        System.out.printf(String.valueOf(movie1.getId()));
+
+        Ticket ticket=new Ticket();
+        ticket.setId(12);
+        ticket.setSeatY(1);
+        ticket.setSeatX(1);
+        ticket.setUser(null);
+
+        modelFactory.TicketRepository().saveAndFlush(ticket);
+
+    Ticket ticket1=modelFactory.TicketRepository().getOne(1);
+
+        System.out.printf(String.valueOf(ticket1.getId()));
+
+
     }
 
 }

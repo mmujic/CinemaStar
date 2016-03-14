@@ -33,12 +33,24 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Ticket>tickets=new ArrayList<>();
+
     public User() {
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public User(String name, String address, String email, String number, boolean admin) {
         this.name = name;
         this.address = address;
+
         this.email = email;
         this.number = number;
         this.admin = admin;
