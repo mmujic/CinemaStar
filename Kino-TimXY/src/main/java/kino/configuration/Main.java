@@ -47,7 +47,6 @@ public class Main {
 
         if(fromDB.getComments().isEmpty()) {
             System.out.println("No comments for user with given ID.");
-            System.exit(-1);
         }
         System.out.println("User comments:");
         for (int i = 0; i < fromDB.getComments().size(); i++) {
@@ -58,7 +57,6 @@ public class Main {
         movie.setDuration(12);
         movie.setDescription("kjashas");
         movie.setName("kjskd");
-        movie.setId(2);
 
         modelFactory.MovieRepository().saveAndFlush(movie);
 
@@ -68,18 +66,35 @@ public class Main {
         System.out.printf(String.valueOf(movie1.getId()));
 
         Ticket ticket=new Ticket();
-        ticket.setId(12);
         ticket.setSeatY(1);
-        ticket.setSeatX(1);
+        ticket.setSeatX(2);
         ticket.setUser(null);
+        ticket.setScreening(null);
 
         modelFactory.TicketRepository().saveAndFlush(ticket);
 
-    Ticket ticket1=modelFactory.TicketRepository().getOne(1);
+        Ticket ticket1=modelFactory.TicketRepository().getOne(ticket.getId());
 
-        System.out.printf(String.valueOf(ticket1.getId()));
+        System.out.printf("assdsd"+String.valueOf(ticket1.getId()));
+
+        Screening screening=new Screening();
+        screening.setTimeBegin(null);
+        screening.setTimeEnd(null);
+        screening.setMovie(null);
+        screening.setTheater(null);
+
+        modelFactory.ScreeningRepository().saveAndFlush(screening);
+
+        System.out.println(screening.getId());
+
+        Theater theater=new Theater();
+        theater.setName("kjsasjd");
+
+        modelFactory.TheaterRepository().saveAndFlush(theater);
+        System.out.println(theater.getId());
 
 
     }
+
 
 }

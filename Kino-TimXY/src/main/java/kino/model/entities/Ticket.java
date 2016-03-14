@@ -23,13 +23,18 @@ public class Ticket {
     @JoinColumn(name = "user")
     private User user;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "screening")
+    private Screening screening;
+
     public Ticket() {
     }
 
-    public Ticket(Integer seatX, Integer seatY, User user) {
+    public Ticket(Integer seatX, Integer seatY, User user, Screening screening) {
         this.seatX = seatX;
         this.seatY = seatY;
         this.user = user;
+        this.screening = screening;
     }
 
     public Integer getId() {
@@ -64,6 +69,14 @@ public class Ticket {
         this.user = user;
     }
 
+    public Screening getScreening() {
+        return screening;
+    }
+
+    public void setScreening(Screening screening) {
+        this.screening = screening;
+    }
+
     @Override
     public String toString() {
         return "Ticket{" +
@@ -71,6 +84,7 @@ public class Ticket {
                 ", seatX=" + seatX +
                 ", seatY=" + seatY +
                 ", user=" + user +
+                ", screening=" + screening +
                 '}';
     }
 }

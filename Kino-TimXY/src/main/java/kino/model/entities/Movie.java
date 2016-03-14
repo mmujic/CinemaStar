@@ -1,6 +1,8 @@
 package kino.model.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "movie")
 @Entity
@@ -21,13 +23,17 @@ public class Movie {
     @Column(name = "duration")
     private Integer duration;
 
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<Screening> screenings = new ArrayList<>();
+
     public Movie() {
     }
 
-    public Movie(String name, String description, Integer duration) {
+    public Movie(String name, String description, Integer duration, List<Screening> screenings) {
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.screenings = screenings;
     }
 
     public Integer getId() {
@@ -62,13 +68,13 @@ public class Movie {
         this.duration = duration;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", duration=" + duration +
-                '}';
+    public List<Screening> getScreenings() {
+        return screenings;
     }
+
+    public void setScreenings(List<Screening> screenings) {
+        this.screenings = screenings;
+    }
+
+
 }
