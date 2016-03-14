@@ -14,6 +14,6 @@ public class IndexController {
     @RequestMapping(value = "/testRest", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String testREST() {
-        return "Zdravo svijete!";
+        return "Gdje si Mele <3 ";
     }
 }

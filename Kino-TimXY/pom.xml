@@ -16,9 +16,16 @@
         <logback.version>1.0.13</logback.version>
         <mysql-connector.version>5.1.37</mysql-connector.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
+        <eclipselink.version>2.5.0</eclipselink.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
