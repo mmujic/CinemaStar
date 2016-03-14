@@ -2,10 +2,7 @@ package kino.model;
 
 import kino.configuration.PersistenceConfiguration;
 import kino.model.entities.Theater;
-import kino.model.repositories.CommentRepository;
-import kino.model.repositories.EventRepository;
-import kino.model.repositories.TheaterRepository;
-import kino.model.repositories.UserRepository;
+import kino.model.repositories.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -50,7 +47,7 @@ public class ModelFactory {
         return theaterRepository;
     }
 
-    public  ScreeningRepository ScreeningRepository(){
+    public ScreeningRepository ScreeningRepository(){
         return screeningRepository;
     }
 

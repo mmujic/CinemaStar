@@ -31,7 +31,7 @@ public class Theater {
     public Theater() {
     }
 
-    public Theater(String name, Integer sizeX, Integer sizeY, List<Comment> screenings) {
+    public Theater(String name, Integer sizeX, Integer sizeY, List<Screening> screenings) {
         this.name = name;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -70,7 +70,7 @@ public class Theater {
         this.sizeY = sizeY;
     }
 
-    public List<Comment> getScreenings() {
+    public List<Screening> getScreenings() {
         return screenings;
     }
 
