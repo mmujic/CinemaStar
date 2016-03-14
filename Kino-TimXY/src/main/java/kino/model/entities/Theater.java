@@ -7,6 +7,8 @@ import java.util.List;
 /**
  * Created by ekusundzija on 3/14/16.
  */
+@Table(name = "theater")
+@Entity
 public class Theater {
 
     private static final long serialVersionUID = 123456782L;
@@ -25,7 +27,7 @@ public class Theater {
     @Column(name = "sizeY")
     private Integer sizeY;
 
-    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
     private List<Screening> screenings = new ArrayList<>();
 
     public Theater() {

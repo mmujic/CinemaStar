@@ -58,7 +58,6 @@ public class Main {
         movie.setDuration(12);
         movie.setDescription("kjashas");
         movie.setName("kjskd");
-        movie.setId(2);
 
         modelFactory.MovieRepository().saveAndFlush(movie);
 
@@ -68,18 +67,19 @@ public class Main {
         System.out.printf(String.valueOf(movie1.getId()));
 
         Ticket ticket=new Ticket();
-        ticket.setId(12);
         ticket.setSeatY(1);
-        ticket.setSeatX(1);
-        ticket.setUser(null);
+        ticket.setSeatX(2);
+        ticket.setUser(user);
+        ticket.setScreening(null);
 
         modelFactory.TicketRepository().saveAndFlush(ticket);
 
-    Ticket ticket1=modelFactory.TicketRepository().getOne(1);
+        Ticket ticket1=modelFactory.TicketRepository().getOne(ticket.getId());
 
-        System.out.printf(String.valueOf(ticket1.getId()));
+        System.out.printf("assdsd"+String.valueOf(ticket1.getId()));
 
 
     }
+
 
 }

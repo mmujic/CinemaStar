@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "screening")
 @Entity
 public class Screening {
+
     private static final long serialVersionUID=123456784L;
 
     @Id
@@ -31,15 +32,19 @@ public class Screening {
     @JoinColumn(name = "theater")
     private Theater theater;
 
+    @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
+    private List<Ticket> tickets = new ArrayList<>();
+
     public Screening() {
 
     }
 
-    public Screening(Date timeBegin, Date timeEnd, Movie movie, Theater theater) {
+    public Screening(Date timeBegin, Date timeEnd, Movie movie, Theater theater, List<Ticket> tickets) {
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
         this.movie = movie;
         this.theater = theater;
+        this.tickets = tickets;
     }
 
     public Integer getId() {
@@ -80,5 +85,25 @@ public class Screening {
 
     public void setTimeBegin(Date timeBegin) {
         this.timeBegin = timeBegin;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    @Override
+    public String toString() {
+        return "Screening{" +
+                "id=" + id +
+                ", timeBegin=" + timeBegin +
+                ", timeEnd=" + timeEnd +
+                ", movie=" + movie +
+                ", theater=" + theater +
+                ", tickets=" + tickets +
+                '}';
     }
 }
