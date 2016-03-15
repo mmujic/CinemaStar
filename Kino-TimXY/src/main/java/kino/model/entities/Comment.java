@@ -77,4 +77,15 @@ public class Comment {
     public void setEvent(Event event) {
         this.event = event;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", time=" + time +
+                ", content='" + content + '\'' +
+                ", user=" + user +
+                ", event=" + event +
+                '}';
+    }
 }

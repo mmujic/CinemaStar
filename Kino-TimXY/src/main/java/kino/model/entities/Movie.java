@@ -76,5 +76,14 @@ public class Movie {
         this.screenings = screenings;
     }
 
-
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", duration=" + duration +
+                ", screenings=" + screenings +
+                '}';
+    }
 }

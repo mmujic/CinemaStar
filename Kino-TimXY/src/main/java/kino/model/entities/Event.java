@@ -89,4 +89,16 @@ public class Event {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", timeBegin=" + timeBegin +
+                ", timeEnd=" + timeEnd +
+                ", comments=" + comments +
+                '}';
+    }
 }

@@ -54,45 +54,47 @@ public class Main {
         }
 
         Movie movie=new Movie();
-        movie.setDuration(12);
-        movie.setDescription("kjashas");
-        movie.setName("kjskd");
+        movie.setDuration(120);
+        movie.setDescription("Leonardo di Caprio. Enough said.");
+        movie.setName("Catch me if you can");
 
         modelFactory.MovieRepository().saveAndFlush(movie);
 
-        System.out.println(movie.getId());
+        System.out.println(String.format("Movie id: %d", movie.getId()));
 
         Movie movie1= modelFactory.MovieRepository().getOne(movie.getId());
-        System.out.printf(String.valueOf(movie1.getId()));
+        System.out.println(String.format("Movie1 id: %d", movie1.getId()));
+
+
+        Theater theater=new Theater();
+        theater.setName("Cinema city");
+
+        modelFactory.TheaterRepository().saveAndFlush(theater);
+        System.out.println(String.format("Theater id: %d", theater.getId()));
+
+        Screening screening=new Screening();
+        screening.setTimeBegin(new Date());
+        screening.setTimeEnd(new Date());
+        screening.setMovie(movie);
+        screening.setTheater(theater);
+
+        modelFactory.ScreeningRepository().saveAndFlush(screening);
+
+        System.out.println(String.format("Screening id: %d", screening.getId()));
 
         Ticket ticket=new Ticket();
         ticket.setSeatY(1);
         ticket.setSeatX(2);
-        ticket.setUser(null);
-        ticket.setScreening(null);
+        ticket.setUser(user);
+        ticket.setScreening(screening);
 
         modelFactory.TicketRepository().saveAndFlush(ticket);
 
         Ticket ticket1=modelFactory.TicketRepository().getOne(ticket.getId());
 
-        System.out.printf("assdsd"+String.valueOf(ticket1.getId()));
+        System.out.println("Ticket id: "+String.valueOf(ticket1.getId()));
 
-        Screening screening=new Screening();
-        screening.setTimeBegin(null);
-        screening.setTimeEnd(null);
-        screening.setMovie(null);
-        screening.setTheater(null);
-
-        modelFactory.ScreeningRepository().saveAndFlush(screening);
-
-        System.out.println(screening.getId());
-
-        Theater theater=new Theater();
-        theater.setName("kjsasjd");
-
-        modelFactory.TheaterRepository().saveAndFlush(theater);
-        System.out.println(theater.getId());
-
+        System.out.println(ticket1);
 
     }
 
