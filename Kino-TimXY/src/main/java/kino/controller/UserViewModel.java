@@ -15,12 +15,16 @@ public class UserViewModel {
 
     private boolean admin;
 
-    public UserViewModel(User user) {
-        this.id=user.getId();
-        this.address=user.getAddress();
-        this.name=user.getName();
-        this.email=user.getEmail();
-        this.number=user.getNumber();
+    public UserViewModel() {
+    }
+
+    public UserViewModel(Integer id, String name, String address, String email, String number, boolean admin) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.number = number;
+        this.admin = admin;
     }
 
     public Integer getId() {

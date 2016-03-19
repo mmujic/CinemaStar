@@ -2,26 +2,28 @@ package kino.controller;
 
 import kino.model.ModelFactory;
 import kino.model.entities.User;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 
-@RestController
+@Controller
 public class UserController {
 
     ModelFactory modelFactory = ModelFactory.getInstance();
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<UserViewModel> getAllUsers() {
-        User user=new User();
-        user.setName("ilvana");
-        UserViewModel userViewModel=new UserViewModel(user);
-        ResponseEntity<UserViewModel> foundResponse =
-                new ResponseEntity<UserViewModel>(userViewModel, HttpStatus.OK);
-        return foundResponse;
+    @RequestMapping(value = "/getUser", method = RequestMethod.GET)
+    public @ResponseBody UserViewModel getAllUsers() {
+        return new UserViewModel(1,"cf","sa","gsa","sgh",true);
+    }
+
+    @RequestMapping(value = "/getUser1", method = RequestMethod.GET)
+    public @ResponseBody UserViewModel getAllUsers1() {
+        UserViewModel userViewModel=new UserViewModel();
+        userViewModel.setName("asasd");
+        return userViewModel;
     }
 
     @RequestMapping(value="/add",method = RequestMethod.POST)
