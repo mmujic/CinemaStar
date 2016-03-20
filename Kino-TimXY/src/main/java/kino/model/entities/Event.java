@@ -1,13 +1,14 @@
 package kino.model.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Table(name = "event")
 @Entity
-public class Event {
+public class Event implements Serializable {
     private static final long serialVersionUID=123456780L;
 
     @Id

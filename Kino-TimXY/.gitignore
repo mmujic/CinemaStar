@@ -26,6 +26,7 @@ local.properties
 target/
 out/
 classes/
+logs/
 *.DS_Store
 .DS_Store
 /.DS_Store

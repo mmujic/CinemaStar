@@ -12,7 +12,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <spring.version>4.1.1.RELEASE</spring.version>
         <spring-data-jpa.version>1.9.4.RELEASE</spring-data-jpa.version>
-        <slf4j.version>1.7.9</slf4j.version>
+        <slf4j.version>1.7.19</slf4j.version>
         <logback.version>1.0.13</logback.version>
         <mysql-connector.version>5.1.37</mysql-connector.version>
         <eclipselink.version>2.5.0</eclipselink.version>
@@ -20,21 +20,30 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.eclipse.persistence</groupId>
-            <artifactId>eclipselink</artifactId>
-            <version>${eclipselink.version}</version>
-        </dependency>
-<!--    SPRING DEPENDECIES  -->
+<!--
+Spring
+-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
             <version>${spring-data-jpa.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
             <version>${spring.version}</version>
         </dependency>
 
@@ -53,15 +62,20 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
             <version>${spring.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-
+<!--
+/Spring
+-->
+<!--
+Logging
+-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -69,18 +83,34 @@
         </dependency>
 
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
 
+<!--
+/Logging
+-->
+<!--
+Persistance
+-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector.version}</version>
         </dependency>
 
-        <!-- Jackson  -->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+        </dependency>
+<!--
+/Persistance
+-->
+<!--
+Jackson
+-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -96,10 +126,21 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
-
+<!--
+/Jackson
+-->
+<!--
+JSP
+-->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
-
+<!--
+/JSP
+-->
     <build>
         <pluginManagement>
             <plugins>
