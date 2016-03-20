@@ -1,10 +1,11 @@
 package kino.model.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "ticket")
 @Entity
-public class Ticket {
+public class Ticket implements Serializable {
 
     private static final long serialVersionUID=123456789L;
 
@@ -75,6 +76,10 @@ public class Ticket {
 
     public void setScreening(Screening screening) {
         this.screening = screening;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     @Override

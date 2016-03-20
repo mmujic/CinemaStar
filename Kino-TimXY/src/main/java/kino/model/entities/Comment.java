@@ -1,11 +1,12 @@
 package kino.model.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "comment")
 @Entity
-public class Comment {
+public class Comment implements Serializable {
     private static final long serialVersionUID=123456781L;
 
     @Id
@@ -76,6 +77,10 @@ public class Comment {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     @Override
