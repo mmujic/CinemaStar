@@ -59,6 +59,8 @@ nb-configuration.xml
 build.xml
 build.properties
 
+src/main/resources/log4j.xml
+
 
 ### vim ###
 .*.s[a-w][a-z]
