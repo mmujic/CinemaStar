@@ -1,12 +1,13 @@
 package kino.model.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "user")
 @Entity
-public class User {
+public class User implements Serializable {
 
     private static final long serialVersionUID=123456789L;
 
@@ -110,6 +111,10 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     @Override

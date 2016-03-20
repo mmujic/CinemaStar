@@ -15,9 +15,8 @@
         <slf4j.version>1.7.9</slf4j.version>
         <logback.version>1.0.13</logback.version>
         <mysql-connector.version>5.1.37</mysql-connector.version>
-        <hibernate.version>5.1.0.Final</hibernate.version>
         <eclipselink.version>2.5.0</eclipselink.version>
-        <jackson.version>1.9.10</jackson.version>
+        <jackson.version>2.7.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -26,19 +25,7 @@
             <artifactId>eclipselink</artifactId>
             <version>${eclipselink.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
+<!--    SPRING DEPENDECIES  -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -64,14 +51,15 @@
         </dependency>
 
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
@@ -92,11 +80,23 @@
             <version>${mysql-connector.version}</version>
         </dependency>
 
+        <!-- Jackson  -->
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
 
     </dependencies>
 

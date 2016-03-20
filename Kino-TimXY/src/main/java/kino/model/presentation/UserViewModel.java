@@ -1,4 +1,4 @@
-package kino.controller;
+package kino.model.presentation;
 
 import kino.model.entities.User;
 
@@ -18,13 +18,13 @@ public class UserViewModel {
     public UserViewModel() {
     }
 
-    public UserViewModel(Integer id, String name, String address, String email, String number, boolean admin) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.number = number;
-        this.admin = admin;
+    public UserViewModel(User user) {
+        id = user.getId();
+        name = user.getName();
+        address = user.getAddress();
+        email = user.getEmail();
+        number = user.getNumber();
+        admin = user.isAdmin();
     }
 
     public Integer getId() {
