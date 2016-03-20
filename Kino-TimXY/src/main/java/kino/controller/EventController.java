@@ -147,7 +147,7 @@ public class EventController {
             logger.error(e.getMessage());
 
             return new ResponseEntity(
-                    ErrorGenerator.generateError(e.getMessage()), HttpStatus.NOT_ACCEPTABLE
+                    ErrorGenerator.generateError(e.getMessage()), HttpStatus.NOT_FOUND
             );
         } catch (Exception e) {
             logger.error("Error occurred: ", e);
