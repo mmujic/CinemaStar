@@ -26,6 +26,7 @@ local.properties
 target/
 out/
 classes/
+logs/
 *.DS_Store
 .DS_Store
 /.DS_Store
@@ -57,6 +58,8 @@ nbactions.xml
 nb-configuration.xml
 build.xml
 build.properties
+
+src/main/resources/log4j.xml
 
 
 ### vim ###
