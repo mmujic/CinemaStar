@@ -76,7 +76,7 @@ public class Theater {
         return screenings;
     }
 
-    public void setScreenings(List<Comment> screening) {
+    public void setScreenings(List<Screening> screening) {
         this.screenings = screenings;
     }
 

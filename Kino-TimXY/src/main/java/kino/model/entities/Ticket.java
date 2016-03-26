@@ -20,7 +20,7 @@ public class Ticket implements Serializable {
     @Column(name = "seatY")
     private Integer seatY;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user")
     private User user;
 
