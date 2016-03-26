@@ -44,7 +44,7 @@ public class MovieController {
         }
     }
 
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getMovie(@PathVariable("id") Integer id) {
         try {
             Movie movie = modelFactory.MovieRepository().findOne(id);
@@ -63,7 +63,7 @@ public class MovieController {
         }
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody Movie movie) {
         try {
             Movie savedMovie = modelFactory.MovieRepository().saveAndFlush(movie);
@@ -81,7 +81,7 @@ public class MovieController {
         }
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Movie newMovie) {
 
         try {
@@ -106,7 +106,7 @@ public class MovieController {
         }
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable("id") Integer id) {
         try {
             modelFactory.MovieRepository().delete(id);

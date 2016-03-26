@@ -43,7 +43,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getUser(@PathVariable("id") Integer id) {
         try {
             User user = modelFactory.UserRepository().findOne(id);
@@ -62,7 +62,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody User user) {
         try {
             User savedUser = modelFactory.UserRepository().saveAndFlush(user);
@@ -80,7 +80,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody User newUser) {
         try {
             User user = modelFactory.UserRepository().findOne(id);
@@ -105,7 +105,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "application/json")
     public ResponseEntity deleteUser(@PathVariable("id") Integer id) {
         try {
             modelFactory.UserRepository().delete(id);
