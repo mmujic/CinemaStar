@@ -2,6 +2,7 @@ package kino.controller;
 
 import kino.configuration.ErrorGenerator;
 import kino.configuration.JsonMessageGenerator;
+import kino.configuration.MovieValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.Movie;
 import kino.model.presentation.MovieViewModel;
@@ -65,6 +66,12 @@ public class MovieController {
 
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody Movie movie) {
+
+        if(MovieValidator.isInvalidMovie(movie)){
+            logger.error("Movie creation failed. Invalid movie params.");
+            return new ResponseEntity(ErrorGenerator.generateError("Movie creation failed. Invalid movie params."), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             Movie savedMovie = modelFactory.MovieRepository().saveAndFlush(movie);
             MovieViewModel movieViewModel = new MovieViewModel(savedMovie);
@@ -83,6 +90,11 @@ public class MovieController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Movie newMovie) {
+
+        if(MovieValidator.isInvalidMovie(newMovie)){
+            logger.error("Movie update failed. Invalid movie params.");
+            return new ResponseEntity(ErrorGenerator.generateError("Movie update failed. Invalid movie params."), HttpStatus.BAD_REQUEST);
+        }
 
         try {
             Movie movie = modelFactory.MovieRepository().findOne(id);
