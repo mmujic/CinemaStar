@@ -17,6 +17,7 @@
         <mysql-connector.version>5.1.37</mysql-connector.version>
         <eclipselink.version>2.5.0</eclipselink.version>
         <jackson.version>2.7.3</jackson.version>
+        <javax.mail.version>1.5.5</javax.mail.version>
     </properties>
 
     <dependencies>
@@ -137,10 +138,22 @@ JSP
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-    </dependencies>
 <!--
 /JSP
 -->
+<!--
+Javax mail
+-->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+<!--
+/Javax mail
+-->
+    </dependencies>
+
     <build>
         <pluginManagement>
             <plugins>

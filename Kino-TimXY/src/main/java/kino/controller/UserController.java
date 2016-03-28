@@ -2,6 +2,7 @@ package kino.controller;
 
 import kino.configuration.ErrorGenerator;
 import kino.configuration.JsonMessageGenerator;
+import kino.configuration.UserValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.User;
 import kino.model.presentation.UserViewModel;
@@ -36,10 +37,10 @@ public class UserController {
             return new ResponseEntity(userViewModels, HttpStatus.OK);
         } catch (NullPointerException e) {
             logger.error("Could not create UserViewModel. User is null", e);
-            return new ResponseEntity(generateError("User not found."), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(ErrorGenerator.generateError("User not found."), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             logger.error("Unknown exception.", e);
-            return new ResponseEntity(generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(ErrorGenerator.generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND);
         }
     }
 
@@ -52,18 +53,24 @@ public class UserController {
             return new ResponseEntity(userViewModel, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             logger.error("User ID parameter type is unsupported", e);
-            return new ResponseEntity(generateError("User ID parameter type is unsupported."), HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity(ErrorGenerator.generateError("User ID parameter type is unsupported."), HttpStatus.NOT_ACCEPTABLE);
         } catch (NullPointerException e) {
             logger.error(String.format("User not found for ID:%d.", id), e);
-            return new ResponseEntity(generateError(String.format("User not found for ID:%d.", id)), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(ErrorGenerator.generateError(String.format("User not found for ID:%d.", id)), HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             logger.error("Something unusual happened. Please try again later.", e);
-            return new ResponseEntity(generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(ErrorGenerator.generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody User user) {
+
+        if(UserValidator.isInvalidUser(user)) {
+            logger.error("User creation failed. Invalid user params.");
+            return new ResponseEntity(ErrorGenerator.generateError("User creation failed. Invalid user params."), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             User savedUser = modelFactory.UserRepository().saveAndFlush(user);
             UserViewModel userViewModel = new UserViewModel(savedUser);
@@ -76,12 +83,18 @@ public class UserController {
             );
         } catch (Exception e) {
             logger.error("Error occurred: ", e);
-            return new ResponseEntity(generateError("User wasn't successfully added"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(ErrorGenerator.generateError("User wasn't successfully added"), HttpStatus.BAD_REQUEST);
         }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody User newUser) {
+
+        if(UserValidator.isInvalidUser(newUser)) {
+            logger.error("User update failed. Invalid user params.");
+            return new ResponseEntity(ErrorGenerator.generateError("User update failed. Invalid user params."), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             User user = modelFactory.UserRepository().findOne(id);
             user.setName(newUser.getName());
@@ -134,11 +147,5 @@ public class UserController {
                     ErrorGenerator.generateError("Something went wrong."), HttpStatus.NOT_FOUND
             );
         }
-    }
-
-    private Map<String, String> generateError(String errorInfo) {
-        Map error = new HashMap<String, String>();
-        error.put("Error", errorInfo);
-        return error;
     }
 }
