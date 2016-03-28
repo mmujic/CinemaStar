@@ -1,8 +1,8 @@
 package kino.controller;
 
-import kino.configuration.ErrorGenerator;
-import kino.configuration.JsonMessageGenerator;
-import kino.configuration.UserValidator;
+import kino.utils.ErrorGenerator;
+import kino.utils.JsonMessageGenerator;
+import kino.model.validation.UserValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.User;
 import kino.model.presentation.UserViewModel;
@@ -14,9 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/user")

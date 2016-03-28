@@ -1,4 +1,4 @@
-package kino.configuration;
+package kino.model.validation;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;

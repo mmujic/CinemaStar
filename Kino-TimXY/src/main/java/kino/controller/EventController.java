@@ -1,7 +1,8 @@
 package kino.controller;
 
-import kino.configuration.ErrorGenerator;
-import kino.configuration.JsonMessageGenerator;
+import kino.model.validation.EventValidator;
+import kino.utils.ErrorGenerator;
+import kino.utils.JsonMessageGenerator;
 import kino.model.ModelFactory;
 import kino.model.entities.Event;
 import kino.model.presentation.EventViewModel;
@@ -74,6 +75,12 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody Event event) {
+
+        if(EventValidator.isInvalidMovie(event)){
+            logger.error("Event creation failed. Invalid event params.");
+            return new ResponseEntity(ErrorGenerator.generateError("Event creation failed. Invalid event params."), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             modelFactory.EventRepository().saveAndFlush(event);
 
@@ -94,6 +101,11 @@ public class EventController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Event newEvent) {
+
+        if(EventValidator.isInvalidMovie(newEvent)){
+            logger.error("Event update failed. Invalid event params.");
+            return new ResponseEntity(ErrorGenerator.generateError("Event creation failed. Invalid event params."), HttpStatus.BAD_REQUEST);
+        }
         try {
             Event event = modelFactory.EventRepository().findOne(id);
 

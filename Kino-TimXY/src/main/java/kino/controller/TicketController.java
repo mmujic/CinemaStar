@@ -1,10 +1,9 @@
 package kino.controller;
 
-import kino.configuration.ErrorGenerator;
-import kino.configuration.JsonMessageGenerator;
+import kino.utils.ErrorGenerator;
+import kino.utils.JsonMessageGenerator;
 import kino.model.ModelFactory;
 import kino.model.entities.Ticket;
-import kino.model.entities.User;
 import kino.model.presentation.TicketViewModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

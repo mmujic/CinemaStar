@@ -1,7 +1,7 @@
 package kino.controller;
 
-import kino.configuration.ErrorGenerator;
-import kino.configuration.JsonMessageGenerator;
+import kino.utils.ErrorGenerator;
+import kino.utils.JsonMessageGenerator;
 import kino.model.entities.Theater;
 import kino.model.presentation.TheaterViewModel;
 import org.slf4j.Logger;

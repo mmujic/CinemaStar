@@ -1,7 +1,7 @@
 package kino.model.presentation;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import kino.configuration.CustomDateSerializer;
+import kino.utils.CustomDateSerializer;
 import kino.model.entities.Event;
 
 import java.util.Date;

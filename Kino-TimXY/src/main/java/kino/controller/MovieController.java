@@ -1,8 +1,8 @@
 package kino.controller;
 
-import kino.configuration.ErrorGenerator;
-import kino.configuration.JsonMessageGenerator;
-import kino.configuration.MovieValidator;
+import kino.utils.ErrorGenerator;
+import kino.utils.JsonMessageGenerator;
+import kino.model.validation.MovieValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.Movie;
 import kino.model.presentation.MovieViewModel;

@@ -1,4 +1,4 @@
-package kino.configuration;
+package kino.utils;
 
 import java.util.HashMap;
 import java.util.Map;

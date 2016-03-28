@@ -1,6 +1,7 @@
-package kino.configuration;
+package kino.model.validation;
 
 import kino.model.entities.User;
+import kino.model.validation.CommonValidators;
 
 public class UserValidator {
 
