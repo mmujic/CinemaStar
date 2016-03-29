@@ -10,7 +10,17 @@ public class EventValidator {
         }
         if (event.getDescription() == null || event.getDescription().equals("") || !CommonValidators.isValidName(event.getName())) {
             return true;
-        } else
-            return false;
+        }
+
+        if (event.getTimeBegin() == null || event.getTimeBegin().equals("")) {
+            return true;
+        }
+
+
+        if (event.getTimeEnd() == null || event.getTimeEnd().equals("")) {
+            return true;
+        }
+
+        return false;
     }
 }

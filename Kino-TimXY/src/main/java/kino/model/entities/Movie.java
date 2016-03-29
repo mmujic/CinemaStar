@@ -23,17 +23,13 @@ public class Movie {
     @Column(name = "duration")
     private Integer duration;
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private List<Screening> screenings = new ArrayList<>();
-
     public Movie() {
     }
 
-    public Movie(String name, String description, Integer duration, List<Screening> screenings) {
+    public Movie(String name, String description, Integer duration) {
         this.name = name;
         this.description = description;
         this.duration = duration;
-        this.screenings = screenings;
     }
 
     public Integer getId() {
@@ -68,14 +64,6 @@ public class Movie {
         this.duration = duration;
     }
 
-    public List<Screening> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(List<Screening> screenings) {
-        this.screenings = screenings;
-    }
-
     @Override
     public String toString() {
         return "Movie{" +
@@ -83,7 +71,6 @@ public class Movie {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", duration=" + duration +
-                ", screenings=" + screenings +
                 '}';
     }
 }

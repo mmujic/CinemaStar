@@ -113,7 +113,6 @@ public class EventController {
             event.setDescription(newEvent.getDescription());
             event.setTimeBegin(newEvent.getTimeBegin());
             event.setTimeEnd(newEvent.getTimeEnd());
-            event.setComments(newEvent.getComments());
 
             modelFactory.EventRepository().save(event);
 

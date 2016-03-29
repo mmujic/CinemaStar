@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ekusundzija on 3/29/16.
- */
 @RestController
 @RequestMapping("/comment")
 public class CommentController {

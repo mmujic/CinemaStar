@@ -6,9 +6,6 @@ import kino.model.entities.Theater;
 
 import java.util.Date;
 
-/**
- * Created by ekusundzija on 3/29/16.
- */
 public class ScreeningViewModel {
 
     private Integer id;

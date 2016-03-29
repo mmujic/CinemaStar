@@ -31,27 +31,12 @@ public class User implements Serializable {
     @Column(name = "adminFlag")
     private boolean admin;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
-
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    //private List<Ticket>tickets=new ArrayList<>();
-
     public User() {
     }
-
-    //public List<Ticket> getTickets() {
-    //    return tickets;
-    //}
-
-    //public void setTickets(List<Ticket> tickets) {
-    //    this.tickets = tickets;
-    //}
 
     public User(String name, String address, String email, String number, boolean admin) {
         this.name = name;
         this.address = address;
-
         this.email = email;
         this.number = number;
         this.admin = admin;
@@ -105,18 +90,6 @@ public class User implements Serializable {
         this.admin = admin;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     @Override
     public String toString() {
         return "User{" +
@@ -126,8 +99,6 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", number='" + number + '\'' +
                 ", admin=" + admin +
-                ", comments=" + comments +
-                //", tickets=" + tickets +
                 '}';
     }
 }

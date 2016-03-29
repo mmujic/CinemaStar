@@ -24,7 +24,7 @@ public class Ticket implements Serializable {
     @JoinColumn(name = "user")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "screening")
     private Screening screening;
 
@@ -76,10 +76,6 @@ public class Ticket implements Serializable {
 
     public void setScreening(Screening screening) {
         this.screening = screening;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     @Override

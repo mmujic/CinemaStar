@@ -16,10 +16,6 @@ import org.slf4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ekusundzija on 3/29/16.
- */
-
 @RestController
 @RequestMapping("/screening")
 public class ScreeningController {

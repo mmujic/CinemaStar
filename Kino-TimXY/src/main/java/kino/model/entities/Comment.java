@@ -21,11 +21,11 @@ public class Comment implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "event")
     private Event event;
 
@@ -77,10 +77,6 @@ public class Comment implements Serializable {
 
     public void setEvent(Event event) {
         this.event = event;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     @Override

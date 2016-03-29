@@ -1,7 +1,10 @@
 package kino.controller;
 
+import kino.utils.JsonMessageGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 public class IndexController {
@@ -13,7 +16,7 @@ public class IndexController {
 
     @RequestMapping(value = "/testRest", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String testREST() {
-        return "Gdje si Mele <3 ";
+    public Map testREST() {
+        return JsonMessageGenerator.generateMessage("Message", "Hello world from JSON.");
     }
 }

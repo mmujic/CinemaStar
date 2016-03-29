@@ -30,9 +30,6 @@ public class Event implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeEnd;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    private List<Comment> comments = new ArrayList<>();
-
     public Event() {
     }
 
@@ -83,14 +80,6 @@ public class Event implements Serializable {
         this.timeEnd = timeEnd;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     @Override
     public String toString() {
         return "Event{" +
@@ -99,7 +88,6 @@ public class Event implements Serializable {
                 ", description='" + description + '\'' +
                 ", timeBegin=" + timeBegin +
                 ", timeEnd=" + timeEnd +
-                ", comments=" + comments +
                 '}';
     }
 }

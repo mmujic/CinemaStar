@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         ModelFactory modelFactory = ModelFactory.getInstance();
-//        System.out.println(modelFactory.UserRepository().findByName("Kurt Cobain").get(0));
 
         User user = new User();
         user.setAddress("Zmaja od Bosne bb");
@@ -45,12 +44,12 @@ public class Main {
         if (fromDB == null)
             throw new RuntimeException("Nije ga fino spremio.");
 
-        if(fromDB.getComments().isEmpty()) {
+        if(modelFactory.CommentRepository().findByUser(fromDB).isEmpty()) {
             System.out.println("No comments for user with given ID.");
         }
         System.out.println("User comments:");
-        for (int i = 0; i < fromDB.getComments().size(); i++) {
-            System.out.println(fromDB.getComments().get(i).getContent());
+        for (int i = 0; i < modelFactory.CommentRepository().findByUser(fromDB).size(); i++) {
+            System.out.println(modelFactory.CommentRepository().findByUser(fromDB).get(i).getContent());
         }
 
         Movie movie=new Movie();
