@@ -4,7 +4,7 @@ import kino.model.entities.Event;
 
 public class EventValidator {
 
-    public static boolean isInvalidMovie(Event event) {
+    public static boolean isInvalidEvent(Event event) {
         if (event.getName() == null || event.getName().equals("") || !CommonValidators.isValidName(event.getName())) {
             return true;
         }

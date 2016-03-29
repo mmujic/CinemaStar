@@ -76,7 +76,7 @@ public class EventController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody Event event) {
 
-        if(EventValidator.isInvalidMovie(event)){
+        if(EventValidator.isInvalidEvent(event)){
             logger.error("Event creation failed. Invalid event params.");
             return new ResponseEntity(ErrorGenerator.generateError("Event creation failed. Invalid event params."), HttpStatus.BAD_REQUEST);
         }
@@ -102,7 +102,7 @@ public class EventController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Event newEvent) {
 
-        if(EventValidator.isInvalidMovie(newEvent)){
+        if(EventValidator.isInvalidEvent(newEvent)){
             logger.error("Event update failed. Invalid event params.");
             return new ResponseEntity(ErrorGenerator.generateError("Event creation failed. Invalid event params."), HttpStatus.BAD_REQUEST);
         }

@@ -1,7 +1,6 @@
 package kino.model.validation;
 
 import kino.model.entities.Movie;
-import kino.model.validation.CommonValidators;
 
 public class MovieValidator {
 
