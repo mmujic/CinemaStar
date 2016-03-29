@@ -6,7 +6,7 @@ Tehnološki stek:
 
 Bekend: Spring MVC
 
-Frontend: Bootstrap, JQuery 
+Frontend: Bootstrap, AngularJS 
 
 Baza: MySQL
 
