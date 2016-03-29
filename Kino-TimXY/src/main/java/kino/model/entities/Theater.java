@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ekusundzija on 3/14/16.
- */
 @Table(name = "theater")
 @Entity
 public class Theater {
@@ -27,17 +24,13 @@ public class Theater {
     @Column(name = "sizeY")
     private Integer sizeY;
 
-    @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL)
-    private List<Screening> screenings = new ArrayList<>();
-
     public Theater() {
     }
 
-    public Theater(String name, Integer sizeX, Integer sizeY, List<Screening> screenings) {
+    public Theater(String name, Integer sizeX, Integer sizeY) {
         this.name = name;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.screenings = screenings;
     }
 
     public Integer getId() {
@@ -72,14 +65,6 @@ public class Theater {
         this.sizeY = sizeY;
     }
 
-    public List<Screening> getScreenings() {
-        return screenings;
-    }
-
-    public void setScreenings(List<Screening> screening) {
-        this.screenings = screenings;
-    }
-
     @Override
     public String toString() {
         return "Theater{" +
@@ -87,7 +72,6 @@ public class Theater {
                 ", name='" + name + '\'' +
                 ", sizeX=" + sizeX +
                 ", sizeY=" + sizeY +
-                ", screenings=" + screenings +
                 '}';
     }
 }

@@ -100,7 +100,6 @@ public class TheaterController {
             theater.setName(newTheater.getName());
             theater.setSizeX(newTheater.getSizeX());
             theater.setSizeY(newTheater.getSizeY());
-            theater.setScreenings(newTheater.getScreenings());
 
             modelFactory.TheaterRepository().save(theater);
 

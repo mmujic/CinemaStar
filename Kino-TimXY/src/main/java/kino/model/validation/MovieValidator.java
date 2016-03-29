@@ -13,7 +13,8 @@ public class MovieValidator {
         }
         if (movie.getDuration() == null || movie.getDuration() <= 0) {
             return true;
-        } else
-            return false;
+        }
+
+        return false;
     }
 }
