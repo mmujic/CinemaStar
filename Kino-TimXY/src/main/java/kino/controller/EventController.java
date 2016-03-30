@@ -23,6 +23,15 @@ public class EventController {
     private final ModelFactory modelFactory = ModelFactory.getInstance();
     private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity handleMyException(Exception  exception) {
+        logger.error("Error ocurred: ", exception);
+        return new ResponseEntity(
+                ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST
+        );
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getEvents() {
         try {
