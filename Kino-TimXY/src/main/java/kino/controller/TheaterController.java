@@ -1,5 +1,6 @@
 package kino.controller;
 
+import kino.model.validation.TheaterValidator;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
 import kino.model.entities.Theater;
@@ -74,6 +75,11 @@ public class TheaterController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody Theater theater) {
+
+        if(TheaterValidator.isInvalidTheater(theater)) {
+            logger.error("Theater create failed. Invalid ticket parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid ticket parameters."), HttpStatus.BAD_REQUEST);
+        }
         try {
             modelFactory.TheaterRepository().saveAndFlush(theater);
 
