@@ -111,8 +111,8 @@ public class TheaterController {
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Theater newTheater) {
 
         if(TheaterValidator.isInvalidTheater(newTheater)) {
-            logger.error("Theater create failed. Invalid theater parameters.");
-            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid theater parameters."), HttpStatus.BAD_REQUEST);
+            logger.error("Theater update failed. Invalid theater parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Theater update failed. Invalid theater parameters."), HttpStatus.BAD_REQUEST);
         }
 
         try {
