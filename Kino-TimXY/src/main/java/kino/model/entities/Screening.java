@@ -1,5 +1,8 @@
 package kino.model.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import kino.utils.CustomDateSerializer;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,10 +50,12 @@ public class Screening {
         return id;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getTimeBegin() {
         return timeBegin;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getTimeEnd() {
         return timeEnd;
     }

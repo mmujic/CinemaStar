@@ -1,5 +1,6 @@
 package kino.controller;
 
+import kino.model.validation.TicketValidator;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
 import kino.model.ModelFactory;
@@ -83,6 +84,11 @@ public class TicketController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody Ticket ticket) {
+
+        if(TicketValidator.isInvalidTicket(ticket)) {
+            logger.error("Ticket create failed. Invalid ticket parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Ticket create failed. Invalid ticket parameters."), HttpStatus.BAD_REQUEST);
+        }
         try {
             modelFactory.TicketRepository().saveAndFlush(ticket);
 
@@ -103,6 +109,11 @@ public class TicketController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Ticket newTicket) {
+
+        if(TicketValidator.isInvalidTicket(newTicket)) {
+            logger.error("Ticket update failed. Invalid ticket parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Ticket update failed. Invalid ticket parameters."), HttpStatus.BAD_REQUEST);
+        }
         try {
             Ticket ticket = modelFactory.TicketRepository().findOne(id);
 

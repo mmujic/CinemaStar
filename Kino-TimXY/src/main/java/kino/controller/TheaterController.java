@@ -1,5 +1,6 @@
 package kino.controller;
 
+import kino.model.validation.TheaterValidator;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
 import kino.model.entities.Theater;
@@ -83,6 +84,11 @@ public class TheaterController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody Theater theater) {
+
+        if(TheaterValidator.isInvalidTheater(theater)) {
+            logger.error("Theater create failed. Invalid ticket parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid ticket parameters."), HttpStatus.BAD_REQUEST);
+        }
         try {
             modelFactory.TheaterRepository().saveAndFlush(theater);
 
@@ -128,39 +134,39 @@ public class TheaterController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-        public ResponseEntity delete(@PathVariable("id") Integer id) {
-            try {
-                modelFactory.TheaterRepository().delete(id);
+    public ResponseEntity delete(@PathVariable("id") Integer id) {
+        try {
+            modelFactory.TheaterRepository().delete(id);
 
-                logger.info(String.format("Theater with ID:%d successfully deleted", id));
+            logger.info(String.format("Theater with ID:%d successfully deleted", id));
 
-                return ResponseEntity
-                        .status(HttpStatus.OK)
-                        .body(JsonMessageGenerator.generateMessage(
-                                "Success", String.format("Theater with ID:%d successfully deleted", id)
-                        ));
-            } catch (NullPointerException e) {
-                logger.error("Failed to delete theater.", e);
-                return new ResponseEntity(
-                        ErrorGenerator.generateError("Failed to delete theater."), HttpStatus.NOT_FOUND
-                );
-            } catch (IllegalArgumentException e) {
-                logger.error("The given id must not be null", e);
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(JsonMessageGenerator.generateMessage(
+                            "Success", String.format("Theater with ID:%d successfully deleted", id)
+                    ));
+        } catch (NullPointerException e) {
+            logger.error("Failed to delete theater.", e);
+            return new ResponseEntity(
+                    ErrorGenerator.generateError("Failed to delete theater."), HttpStatus.NOT_FOUND
+            );
+        } catch (IllegalArgumentException e) {
+            logger.error("The given id must not be null", e);
 
-                return new ResponseEntity(
-                        ErrorGenerator.generateError("The given id must not be null"), HttpStatus.NOT_ACCEPTABLE
-                );
-            } catch (EmptyResultDataAccessException e) {
-                logger.error(e.getMessage());
+            return new ResponseEntity(
+                    ErrorGenerator.generateError("The given id must not be null"), HttpStatus.NOT_ACCEPTABLE
+            );
+        } catch (EmptyResultDataAccessException e) {
+            logger.error(e.getMessage());
 
-                return new ResponseEntity(
-                        ErrorGenerator.generateError(e.getMessage()), HttpStatus.NOT_FOUND
-                );
-            } catch (Exception e) {
-                logger.error("Something unusual happened. Please try again later.", e);
-                return new ResponseEntity(
-                        ErrorGenerator.generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND
-                );
-            }
+            return new ResponseEntity(
+                    ErrorGenerator.generateError(e.getMessage()), HttpStatus.NOT_FOUND
+            );
+        } catch (Exception e) {
+            logger.error("Something unusual happened. Please try again later.", e);
+            return new ResponseEntity(
+                    ErrorGenerator.generateError("Something unusual happened. Please try again later."), HttpStatus.NOT_FOUND
+            );
+        }
     }
 }
