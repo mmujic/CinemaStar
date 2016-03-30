@@ -25,7 +25,7 @@ public class EventController {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseEntity handleMyException(Exception  exception) {
+    public ResponseEntity handleRequestBodyException(Exception  exception) {
         logger.error("Error ocurred: ", exception);
         return new ResponseEntity(
                 ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST

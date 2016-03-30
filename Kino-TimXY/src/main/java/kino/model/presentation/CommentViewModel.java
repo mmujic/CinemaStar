@@ -1,8 +1,10 @@
 package kino.model.presentation;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import kino.model.entities.Comment;
 import kino.model.entities.Event;
 import kino.model.entities.User;
+import kino.utils.CustomDateSerializer;
 
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class CommentViewModel {
         this.id = id;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getTime() {
         return time;
     }

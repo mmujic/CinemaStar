@@ -22,6 +22,15 @@ public class CommentController {
     private final ModelFactory modelFactory = ModelFactory.getInstance();
     private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity handleRequestBodyException(Exception  exception) {
+        logger.error("Error ocurred: ", exception);
+        return new ResponseEntity(
+                ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST
+        );
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getComments() {
         try {
@@ -102,7 +111,6 @@ public class CommentController {
 
             comment.setContent(newComment.getContent());
             comment.setEvent(newComment.getEvent());
-            comment.setId(newComment.getId());
             comment.setTime(newComment.getTime());
             comment.setUser(newComment.getUser());
 

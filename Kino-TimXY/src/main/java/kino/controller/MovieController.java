@@ -25,6 +25,15 @@ public class MovieController {
     private final ModelFactory modelFactory = ModelFactory.getInstance();
     private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity handleRequestBodyException(Exception  exception) {
+        logger.error("Error ocurred: ", exception);
+        return new ResponseEntity(
+                ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST
+        );
+    }
+
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getMovies() {
         try {

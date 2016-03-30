@@ -23,6 +23,15 @@ public class ScreeningController {
     private final ModelFactory modelFactory = ModelFactory.getInstance();
     private static final Logger logger = LoggerFactory.getLogger(ScreeningController.class);
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity handleRequestBodyException(Exception  exception) {
+        logger.error("Error ocurred: ", exception);
+        return new ResponseEntity(
+                ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST
+        );
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getScreenings() {
         try {
@@ -101,7 +110,6 @@ public class ScreeningController {
         try {
             Screening screening = modelFactory.ScreeningRepository().findOne(id);
 
-            screening.setId(newscreening.getId());
             screening.setMovie(newscreening.getMovie());
             screening.setTheater(newscreening.getTheater());
             screening.setTimeBegin(newscreening.getTimeBegin());

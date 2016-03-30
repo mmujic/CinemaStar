@@ -21,11 +21,11 @@ public class Comment implements Serializable {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "event")
     private Event event;
 

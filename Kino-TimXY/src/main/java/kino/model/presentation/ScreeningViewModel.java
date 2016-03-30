@@ -1,8 +1,10 @@
 package kino.model.presentation;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import kino.model.entities.Movie;
 import kino.model.entities.Screening;
 import kino.model.entities.Theater;
+import kino.utils.CustomDateSerializer;
 
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class ScreeningViewModel {
         this.id = id;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getTimeBegin() {
         return timeBegin;
     }
@@ -41,6 +44,7 @@ public class ScreeningViewModel {
         this.timeBegin = timeBegin;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getTimeEnd() {
         return timeEnd;
     }

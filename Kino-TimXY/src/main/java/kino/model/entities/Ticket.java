@@ -20,11 +20,11 @@ public class Ticket implements Serializable {
     @Column(name = "seatY")
     private Integer seatY;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user")
     private User user;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "screening")
     private Screening screening;
 

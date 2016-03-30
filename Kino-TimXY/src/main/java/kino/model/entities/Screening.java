@@ -24,11 +24,11 @@ public class Screening {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeEnd;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "movie")
     private Movie movie;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "theater")
     private Theater theater;
 

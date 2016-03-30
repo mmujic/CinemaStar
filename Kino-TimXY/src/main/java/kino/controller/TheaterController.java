@@ -22,6 +22,15 @@ public class TheaterController {
     private final ModelFactory modelFactory = ModelFactory.getInstance();
     private static final Logger logger = LoggerFactory.getLogger(TheaterController.class);
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity handleRequestBodyException(Exception  exception) {
+        logger.error("Error ocurred: ", exception);
+        return new ResponseEntity(
+                ErrorGenerator.generateError(String.format("Error ocurred: %s", exception.getMessage())), HttpStatus.BAD_REQUEST
+        );
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getTheaters() {
         try {

@@ -33,6 +33,7 @@ public class TicketViewModel {
         seatY = ticket.getSeatY();
         id = ticket.getId();
         user = ticket.getUser();
+        screening = ticket.getScreening();
     }
 
     public TicketViewModel() {
