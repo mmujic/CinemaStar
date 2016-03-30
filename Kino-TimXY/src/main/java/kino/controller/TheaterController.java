@@ -86,8 +86,8 @@ public class TheaterController {
     public ResponseEntity create(@RequestBody Theater theater) {
 
         if(TheaterValidator.isInvalidTheater(theater)) {
-            logger.error("Theater create failed. Invalid ticket parameters.");
-            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid ticket parameters."), HttpStatus.BAD_REQUEST);
+            logger.error("Theater create failed. Invalid theater parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid theater parameters."), HttpStatus.BAD_REQUEST);
         }
         try {
             modelFactory.TheaterRepository().saveAndFlush(theater);
@@ -109,6 +109,12 @@ public class TheaterController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody Theater newTheater) {
+
+        if(TheaterValidator.isInvalidTheater(newTheater)) {
+            logger.error("Theater create failed. Invalid theater parameters.");
+            return new ResponseEntity(ErrorGenerator.generateError("Theater create failed. Invalid theater parameters."), HttpStatus.BAD_REQUEST);
+        }
+
         try {
             Theater theater = modelFactory.TheaterRepository().findOne(id);
 
