@@ -21,9 +21,9 @@
     </properties>
 
     <dependencies>
-<!--
-Spring
--->
+        <!--
+        Spring
+        -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -71,12 +71,12 @@ Spring
             </exclusions>
             <version>${spring.version}</version>
         </dependency>
-<!--
-/Spring
--->
-<!--
-Logging
--->
+        <!--
+        /Spring
+        -->
+        <!--
+        Logging
+        -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -89,12 +89,12 @@ Logging
             <version>${slf4j.version}</version>
         </dependency>
 
-<!--
-/Logging
--->
-<!--
-Persistance
--->
+        <!--
+        /Logging
+        -->
+        <!--
+        Persistance
+        -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -106,12 +106,12 @@ Persistance
             <artifactId>eclipselink</artifactId>
             <version>${eclipselink.version}</version>
         </dependency>
-<!--
-/Persistance
--->
-<!--
-Jackson
--->
+        <!--
+        /Persistance
+        -->
+        <!--
+        Jackson
+        -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -127,31 +127,31 @@ Jackson
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-<!--
-/Jackson
--->
-<!--
-JSP
--->
+        <!--
+        /Jackson
+        -->
+        <!--
+        JSP
+        -->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-<!--
-/JSP
--->
-<!--
-Javax mail
--->
+        <!--
+        /JSP
+        -->
+        <!--
+        Javax mail
+        -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
-<!--
-/Javax mail
--->
+        <!--
+        /Javax mail
+        -->
     </dependencies>
 
     <build>

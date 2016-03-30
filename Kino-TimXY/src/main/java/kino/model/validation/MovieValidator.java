@@ -1,7 +1,6 @@
 package kino.model.validation;
 
 import kino.model.entities.Movie;
-import kino.model.validation.CommonValidators;
 
 public class MovieValidator {
 
@@ -14,7 +13,8 @@ public class MovieValidator {
         }
         if (movie.getDuration() == null || movie.getDuration() <= 0) {
             return true;
-        } else
-            return false;
+        }
+
+        return false;
     }
 }

@@ -10,7 +10,7 @@ public class TicketViewModel {
     private Integer seatX;
     private Integer seatY;
     private User user;
-   // private Screening screening;
+    private Screening screening;
 
     public User getUser() {
         return user;
@@ -20,13 +20,13 @@ public class TicketViewModel {
         this.user = user;
     }
 
-    //public Screening getScreening() {
-    //    return screening;
-    //}
+    public Screening getScreening() {
+        return screening;
+    }
 
-    //public void setScreening(Screening screening) {
-    //    this.screening = screening;
-    //}
+    public void setScreening(Screening screening) {
+        this.screening = screening;
+    }
 
     public TicketViewModel(Ticket ticket) {
         seatX = ticket.getSeatX();

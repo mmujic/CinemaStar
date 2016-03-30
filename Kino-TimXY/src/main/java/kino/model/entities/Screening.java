@@ -24,27 +24,23 @@ public class Screening {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timeEnd;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "movie")
     private Movie movie;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "theater")
     private Theater theater;
-
-    @OneToMany(mappedBy = "screening", cascade = CascadeType.ALL)
-    private List<Ticket> tickets = new ArrayList<>();
 
     public Screening() {
 
     }
 
-    public Screening(Date timeBegin, Date timeEnd, Movie movie, Theater theater, List<Ticket> tickets) {
+    public Screening(Date timeBegin, Date timeEnd, Movie movie, Theater theater) {
         this.timeBegin = timeBegin;
         this.timeEnd = timeEnd;
         this.movie = movie;
         this.theater = theater;
-        this.tickets = tickets;
     }
 
     public Integer getId() {
@@ -87,14 +83,6 @@ public class Screening {
         this.timeBegin = timeBegin;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
-    }
-
     @Override
     public String toString() {
         return "Screening{" +
@@ -103,7 +91,6 @@ public class Screening {
                 ", timeEnd=" + timeEnd +
                 ", movie=" + movie +
                 ", theater=" + theater +
-                ", tickets=" + tickets +
                 '}';
     }
 }
