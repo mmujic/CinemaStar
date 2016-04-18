@@ -24,7 +24,7 @@
                     authentication-failure-url="/login?error=true" username-parameter="username"
                     password-parameter="password"/>
 
-        <logout logout-url="/logout" logout-success-url="/logoutSuccessful"
+        <logout logout-url="/j_spring_security_logout" logout-success-url="/logoutSuccessful"
                 delete-cookies="JSESSIONID" invalidate-session="true"/>
 
     </http>
@@ -32,10 +32,10 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="user1" password="12345" authorities="ROLE_USER"/>
+                <user name="user1" password="12345"  authorities="ROLE_USER"/>
                 <user name="admin1" password="12345" authorities="ROLE_USER, ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
-
     </authentication-manager>
+    
 </beans:beans>
