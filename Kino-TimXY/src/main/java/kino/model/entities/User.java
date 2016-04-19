@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Table(name = "user")
+@Table(name = "users")
 @Entity
 public class User implements Serializable {
 
@@ -18,6 +18,18 @@ public class User implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "role")
+    private String role;
+
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @Column(name = "address")
     private String address;
@@ -34,8 +46,12 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String address, String email, String number, boolean admin) {
+    public User(String name, String username, String password, String role, boolean enable, String address, String email, String number, boolean admin) {
         this.name = name;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enable;
         this.address = address;
         this.email = email;
         this.number = number;
@@ -90,11 +106,47 @@ public class User implements Serializable {
         this.admin = admin;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean getEnable() {
+        return enabled;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enabled = enable;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", enable='" + enabled + '\'' +
                 ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", number='" + number + '\'' +

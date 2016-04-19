@@ -16,6 +16,10 @@ public class Main {
         user.setName("Narcis Behlilovic");
         user.setAdmin(false);
         user.setEmail("cizi@live.com");
+        user.setUsername("jhbjhsd");
+        user.setPassword("hjsdbdjs");
+        user.setEnable(true);
+        user.setRole("konj");
         user.setNumber("033-225-883");
         modelFactory.UserRepository().saveAndFlush(user);
 
