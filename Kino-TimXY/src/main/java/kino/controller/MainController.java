@@ -44,7 +44,7 @@ public class MainController {
         String userName = principal.getName();
 
         model.addAttribute("message",
-                "User Info - This is protected page!. Hello " + userName);
+                "Hello " + userName);
 
         return "index";
     }
