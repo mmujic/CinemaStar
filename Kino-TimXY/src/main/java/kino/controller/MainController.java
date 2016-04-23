@@ -37,9 +37,8 @@ public class MainController {
         return "logoutSuccessfulPage";
     }
 
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String loginPage(Model model, Principal principal) {
-        model.addAttribute("title", "User Info");
 
         // Sau khi user login thanh cong se co principal
         String userName = principal.getName();
@@ -47,7 +46,7 @@ public class MainController {
         model.addAttribute("message",
                 "User Info - This is protected page!. Hello " + userName);
 
-        return "userInfoPage";
+        return "index";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
