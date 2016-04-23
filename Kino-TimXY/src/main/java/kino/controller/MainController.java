@@ -28,7 +28,7 @@ public class MainController {
     public String loginPage(Model model) {
         model.addAttribute("title", "Login");
         model.addAttribute("message", "Enter your username/password:");
-        return "loginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)

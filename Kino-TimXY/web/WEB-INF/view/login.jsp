@@ -90,7 +90,7 @@
 								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/login" class="active"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
 					</div>
@@ -119,7 +119,7 @@
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html" class="active">Login</a></li> 
+										<li><a href="/login" class="active">Login</a></li>
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -149,13 +149,17 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
-							</span>
+						<form action="j_spring_security_check" method='POST'>
+							<td>User:</td>
+							<td><input type='text' name='username' value=''></td>
+							</tr>
+							<tr>
+								<td>Password:</td>
+								<td><input type='password' name='password' /></td>
+							<input type="hidden"
+								   name="${_csrf.parameterName}"
+								   value="${_csrf.token}"/>
+
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->
