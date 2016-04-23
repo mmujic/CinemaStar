@@ -25,41 +25,20 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model) {
-        model.addAttribute("title", "Login");
-        model.addAttribute("message", "Enter your username/password:");
+    public String oginPage(Model model) {
+        model.addAttribute("message", "Welcome anonymous.");
         return "login";
-    }
-
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
-        model.addAttribute("title", "Logout");
-        return "logoutSuccessfulPage";
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String loginPage(Model model, Principal principal) {
-
-        // Sau khi user login thanh cong se co principal
         String userName = principal.getName();
-
-        model.addAttribute("message",
-                "Hello " + userName);
-
+        model.addAttribute("message", "Welcome " + userName);
         return "index";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String accessDenied(Model model, Principal principal) {
-        model.addAttribute("title", "Access Denied!");
-
-        if (principal != null) {
-            model.addAttribute("message", "Hi " + principal.getName()
-                    + "<br> You do not have permission to access this page!");
-        } else {
-            model.addAttribute("msg",
-                    "You do not have permission to access this page!");
-        }
+    public String accessDenied() {
         return "403Page";
     }
 }

@@ -9,7 +9,7 @@
         <intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
         <intercept-url pattern="/welcome" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
-        <intercept-url pattern="/logout" access="isAnonymous()"/>
+        <intercept-url pattern="/logout" access="isAuthenticated()"/>
 
 
         <intercept-url pattern="/index"
@@ -24,7 +24,7 @@
                     authentication-failure-url="/login?error=true" username-parameter="username"
                     password-parameter="password"/>
 
-        <logout logout-url="/j_spring_security_logout" logout-success-url="/logoutSuccessful"
+        <logout logout-url="/j_spring_security_logout" logout-success-url="/index"
                 delete-cookies="JSESSIONID" invalidate-session="true"/>
 
     </http>
