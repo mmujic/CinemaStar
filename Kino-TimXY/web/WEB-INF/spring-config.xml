@@ -26,7 +26,6 @@
 
         <logout logout-url="/j_spring_security_logout" logout-success-url="/index"
                 delete-cookies="JSESSIONID" invalidate-session="true"/>
-
     </http>
 
     <!--autentifikacija hardcodirana-->
