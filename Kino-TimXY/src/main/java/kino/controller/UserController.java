@@ -108,6 +108,10 @@ public class UserController {
             user.setAddress(newUser.getAddress());
             user.setEmail(newUser.getEmail());
             user.setNumber(newUser.getNumber());
+            user.setEnable(newUser.getEnable());
+            user.setAdmin(newUser.isAdmin());
+            user.setUsername(newUser.getUsername());
+            user.setPassword(newUser.getPassword());
 
             modelFactory.UserRepository().save(user);
             logger.info(String.format("User with ID: %d successfully updated.", user.getId()));
