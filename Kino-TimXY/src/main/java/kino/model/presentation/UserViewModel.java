@@ -15,6 +15,15 @@ public class UserViewModel {
 
     private boolean admin;
 
+    private String username;
+
+
+    private String password;
+
+    private String role;
+
+    private boolean enabled;
+
     public UserViewModel() {
     }
 
@@ -25,6 +34,10 @@ public class UserViewModel {
         email = user.getEmail();
         number = user.getNumber();
         admin = user.isAdmin();
+        username = user.getUsername();
+        password = user.getPassword();
+        role = user.getRole();
+        enabled = user.getEnable();
     }
 
     public Integer getId() {
@@ -73,5 +86,37 @@ public class UserViewModel {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
