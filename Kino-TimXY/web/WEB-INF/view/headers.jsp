@@ -1,4 +1,6 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <head>
+    <sec:csrfMetaTags/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -15,6 +17,19 @@
     <script src="resources/js/html5shiv.js"></script>
     <script src="resources/js/respond.min.js"></script>
     <![endif]-->
+
+    <!-- AngularJS -->
+    <script src='resources/static/angular/angular.js'></script>
+    <script src='resources/static/angular/angular-route.js'></script>
+    <script src='resources/static/angular/angular-cookies.js'></script>
+
+    <!-- Custom angular -->
+
+    <script src="resources/angular/application.js" type="text/javascript"></script>
+
+    <script src="resources/angular/home/homeService.js" type="text/javascript"></script>
+    <script src="resources/angular/home/homeController.js" type="text/javascript"></script>
+
     <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
           href="resources/images/ico/apple-touch-icon-144-precomposed.png">

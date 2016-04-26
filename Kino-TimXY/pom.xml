@@ -19,6 +19,7 @@
         <eclipselink.version>2.5.0</eclipselink.version>
         <jackson.version>2.7.3</jackson.version>
         <javax.mail.version>1.5.5</javax.mail.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
     </properties>
 
     <dependencies>
@@ -191,7 +192,14 @@
             </exclusions>
         </dependency>
         <!--spring security-->
-        
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

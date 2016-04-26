@@ -14,9 +14,4 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value = "/testRest", method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody
-    public Map testREST() {
-        return JsonMessageGenerator.generateMessage("Message", "Hello world from JSON.");
-    }
 }
