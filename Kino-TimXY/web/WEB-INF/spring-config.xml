@@ -40,8 +40,10 @@
     <!--</authentication-manager>-->
 
     <!--autentifikacija baza-->
+
     <authentication-manager>
     <authentication-provider>
+        <password-encoder ref="encoder" />
         <jdbc-user-service data-source-ref="dataSource"
                            users-by-username-query="select username,password,enabled from users where username=?"
                            authorities-by-username-query="select username, role from users where username=?" />

@@ -63,9 +63,9 @@
                             <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="/#/contact"><i class="fa fa-user"></i> Contact</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="/login" class="active"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/#/registration"><i class="fa fa-lock"></i> Registration</a></li>
                             <li><a href="#" onclick="document.getElementById('logoutForm').submit();"
                                    role="button"><i class="fa fa-lock"></i>Log out</a></li>
                         </ul>
