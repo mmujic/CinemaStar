@@ -10,6 +10,10 @@ app.config(function ($routeProvider, $httpProvider) {
         .when('/contact', {
             templateUrl: '/resources/angular/contact/contact.html',
             controller: 'ContactController'
+        })
+        .when('/registration', {
+            templateUrl: '/resources/angular/registration/registration.html',
+            controller: 'RegistrationController'
         });
 
     $httpProvider.defaults.headers.common = {Accept: "application/json"};
@@ -17,12 +21,4 @@ app.config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-Token';
 
-});
-
-var token;
-var header;
-app.run(function run( $http, $cookies ){
-    if($cookies._csrf != undefined) {
-        token = $cookies._csrf;
-    }
 });

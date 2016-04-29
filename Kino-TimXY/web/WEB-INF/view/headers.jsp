@@ -30,6 +30,12 @@
     <script src="resources/angular/home/homeService.js" type="text/javascript"></script>
     <script src="resources/angular/home/homeController.js" type="text/javascript"></script>
 
+    <script src="resources/angular/contact/contactService.js" type="text/javascript"></script>
+    <script src="resources/angular/contact/contactController.js" type="text/javascript"></script>
+
+    <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
+    <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
+
     <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
           href="resources/images/ico/apple-touch-icon-144-precomposed.png">

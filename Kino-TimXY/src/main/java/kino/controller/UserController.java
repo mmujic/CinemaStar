@@ -11,6 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -79,9 +83,13 @@ public class UserController {
         }
 
         try {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = modelFactory.UserRepository().saveAndFlush(user);
             UserViewModel userViewModel = new UserViewModel(savedUser);
             logger.info(String.format("User successfuly created. User ID: %d", user.getId()));
+            //TODO
+            //Send verification email
             return new ResponseEntity(userViewModel, HttpStatus.OK);
         } catch (NullPointerException e) {
             logger.error("Failed to create user.", e);
