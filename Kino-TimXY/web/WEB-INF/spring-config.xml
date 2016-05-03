@@ -6,14 +6,14 @@
     http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern="/" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/" access="isAnonymous()"/>
         <intercept-url pattern="/welcome" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
         <intercept-url pattern="/logout" access="isAuthenticated()"/>
 
 
         <intercept-url pattern="/index"
-                       access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
+                       access="isAnonymous()"/>
         <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/other/**" access="isAuthenticated()"/>
 
@@ -27,17 +27,6 @@
         <logout logout-url="/j_spring_security_logout" logout-success-url="/index"
                 delete-cookies="JSESSIONID" invalidate-session="true"/>
     </http>
-
-    <!--autentifikacija hardcodirana-->
-
-    <!--<authentication-manager>-->
-        <!--<authentication-provider>-->
-            <!--<user-service>-->
-                <!--<user name="user1" password="12345"  authorities="ROLE_USER"/>-->
-                <!--<user name="admin1" password="12345" authorities="ROLE_USER, ROLE_ADMIN"/>-->
-            <!--</user-service>-->
-        <!--</authentication-provider>-->
-    <!--</authentication-manager>-->
 
     <!--autentifikacija baza-->
 

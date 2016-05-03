@@ -24,12 +24,6 @@ public class MainController {
         return "adminPage";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String oginPage(Model model) {
-        model.addAttribute("message", "Welcome anonymous.");
-        return "login";
-    }
-
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String loginPage(Model model, Principal principal) {
         String userName = principal.getName();
