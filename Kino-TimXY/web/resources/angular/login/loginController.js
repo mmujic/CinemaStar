@@ -1,5 +1,7 @@
-app.controller("LoginController", ['$scope', '$log', 'LoginService',
-    function ($scope, $log, LoginService) {
+app.controller("LoginController", ['$scope', '$log', 'LoginService', '$window',
+    function ($scope, $log, LoginService, $window) {
+
+        $scope.csrfValue = $window.document.getElementsByName('_csrf')[0].content;
 
         $scope.error = false;
 

@@ -69,7 +69,8 @@
                                 <li><a href="/#/login" class="active"><i class="fa fa-lock"></i> Login</a></li>
                             </sec:authorize>
                             <sec:authorize access="hasRole('ROLE_USER')">
-                                <li><a href="<c:url value="/j_spring_security_logout"/>">Logout</a></li>
+                                <li><a href="#" onclick="document.getElementById('logoutForm').submit();"
+                                       role="button"><i class="fa fa-lock"></i>Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ROLE_USER')">
                                 <li><a href="/#/registration"><i class="fa fa-lock"></i> Registration</a></li>
