@@ -11,6 +11,10 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: '/resources/angular/contact/contact.html',
             controller: 'ContactController'
         })
+        .when('/login', {
+            templateUrl: '/resources/angular/login/login.html',
+            controller: 'LoginController'
+        })
         .when('/registration', {
             templateUrl: '/resources/angular/registration/registration.html',
             controller: 'RegistrationController'
