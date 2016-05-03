@@ -36,7 +36,6 @@
     <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
 
-    <script src="resources/angular/login/loginService.js" type="text/javascript"></script>
     <script src="resources/angular/login/loginController.js" type="text/javascript"></script>
 
 
