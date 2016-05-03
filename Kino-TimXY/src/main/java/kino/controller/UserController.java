@@ -131,7 +131,7 @@ public class UserController {
         return new ResponseEntity("Check user login.", httpStatus);
     }
 
-    private boolean isValidUser(@RequestBody User userCredentials, List<User> users) {
+    private boolean isValidUser(User userCredentials, List<User> users) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return users.size() == 1 && passwordEncoder.matches(userCredentials.getPassword(), users.get(0).getPassword());
     }
