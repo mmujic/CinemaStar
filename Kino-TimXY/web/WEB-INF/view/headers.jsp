@@ -22,8 +22,12 @@
     <script src='resources/static/angular/angular.js'></script>
     <script src='resources/static/angular/angular-route.js'></script>
     <script src='resources/static/angular/angular-cookies.js'></script>
+<<<<<<< HEAD
     <script type="text/javascript" src="resources/static/angular/angular-translate.min.js"></script>
     <script type="text/javascript" src="resources/static/angular/angular-translate-loader-url.min.js"></script>
+=======
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+>>>>>>> af47c496854401ba08e0003710a238f13f64872c
 
     <!-- Custom angular -->
 
@@ -39,6 +43,8 @@
 
     <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
+    <script src="resources/angular/controllers.js" type="text/javascript"></script>
+    <script src="resources/angular/services.js" type="text/javascript"></script>
 
 
     <!-- reCAPTCHA -->

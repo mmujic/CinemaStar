@@ -39,7 +39,11 @@
 
     <bean id="messageSource" class="kino.utils.SerializableResourceBundleMessageSource">
         <property name="basename">
+<<<<<<< HEAD
             <value>classpath:/messages</value>
+=======
+            <value>messages</value>
+>>>>>>> af47c496854401ba08e0003710a238f13f64872c
         </property>
     </bean>
 
