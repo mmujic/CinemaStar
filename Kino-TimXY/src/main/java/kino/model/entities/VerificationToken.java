@@ -2,7 +2,7 @@ package kino.model.entities;
 
 import javax.persistence.*;
 
-@Table(name = "users")
+@Table(name = "verification_token")
 @Entity
 public class VerificationToken {
     @Id

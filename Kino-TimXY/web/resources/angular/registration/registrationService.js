@@ -7,7 +7,7 @@ app.service('RegistrationService', ['$http', '$q', '$log', '$window', function (
         $http.post('/user', user, {  headers: { 'Content-Type': 'application/json' } }
             ).success(function () {
                 deferred.resolve();
-                $window.location.href = "/login";
+                $window.location.href = "/#/login";
             }).error(function (data, status, headers, config) {
                 $log.log(data, status, headers, config);
                 deferred.reject();

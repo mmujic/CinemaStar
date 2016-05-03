@@ -20,8 +20,8 @@ public class BeanConfiguration {
         mailSender.setPort(587);
 
         Properties properties = new Properties();
-        properties.setProperty("mail.smtp.auth", "false");
-        properties.setProperty("mail.smtp.starttls.enable", "false");
+        properties.setProperty("mail.smtp.auth", "true");
+        properties.setProperty("mail.smtp.starttls.enable", "true");
         mailSender.setJavaMailProperties(properties);
 
         return mailSender;

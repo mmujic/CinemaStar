@@ -1,8 +1,10 @@
 package kino.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kino.configuration.BeanConfiguration;
 import kino.model.ReCaptcha;
 import kino.model.UserResponseWrapper;
+import kino.model.entities.VerificationToken;
 import kino.service.VerificationTokenService;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
@@ -82,6 +84,28 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/registration/{token}", method = RequestMethod.GET)
+    public ResponseEntity getUser(@PathVariable("token") String token) {
+        List<VerificationToken> verificationTokens = ModelFactory
+                                                        .getInstance()
+                                                        .VerificationTokenRepository()
+                                                        .findByToken(token);
+
+        if(verificationTokens.size()==1) {
+            VerificationToken verificationToken = verificationTokens.get(0);
+            User user = ModelFactory.getInstance().UserRepository().findOne(verificationToken.getUser().getId());
+            user.setEnable(true);
+
+            ModelFactory.getInstance().UserRepository().saveAndFlush(user);
+
+            return new ResponseEntity("Registration confirmation success.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Registration confirmation failure.", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+
+    }
+
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody UserResponseWrapper userResponseWrapper) {
 
@@ -115,7 +139,7 @@ public class UserController {
             VerificationTokenService verificationTokenService = applicationContext.getBean(VerificationTokenService.class);
             MailService mailService = applicationContext.getBean(MailService.class);
 
-            String url = String.format("localhost:8080/registration/confirm/%s", verificationTokenService.createToken(savedUser));
+            String url = String.format("localhost:8080/user/registration/%s", verificationTokenService.createToken(savedUser));
             String message = String.format("Please visit %s to complete your registration.", url);
 
             mailService.sendMail("no-reply@cinema-nwt.com", savedUser.getEmail(), "Registration confirmation", message);

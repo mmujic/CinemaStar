@@ -14,7 +14,7 @@ public class VerificationTokenService {
     public String createToken(User user) {
         VerificationToken verificationToken = new VerificationToken();
 
-        String token = new BigInteger(130, random).toString();
+        String token = new BigInteger(130, random).toString(32);
 
         verificationToken.setUser(user);
         verificationToken.setToken(token);
