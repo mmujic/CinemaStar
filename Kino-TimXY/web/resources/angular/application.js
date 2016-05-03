@@ -1,6 +1,6 @@
-var app = angular.module('Application', ['ngRoute', 'ngCookies', 'controllers', 'services','directives', 'pascalprecht.translate']);
+var app = angular.module('Application', ['pascalprecht.translate','ngRoute', 'ngCookies', 'controllers', 'services']);
 
-app.config(function ($routeProvider, $httpProvider, $translateProvider) {
+app.config(function ($translateProvider, $routeProvider, $httpProvider) {
 
     $routeProvider
         .when('/', {

@@ -1,4 +1,4 @@
-var services = angular.module('services', ['ngResource']);
+var services = angular.module('services', []);
 
 services.factory('UrlLanguageStorage', ['$location', function ($location) {
     return {
