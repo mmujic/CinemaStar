@@ -1,4 +1,4 @@
-app.service('RegistrationService', ['$http', '$q', '$log', function ($http, $q, $log) {
+app.service('RegistrationService', ['$http', '$q', '$log', '$window', function ($http, $q, $log, $window) {
 
     this.createNewUser = function (user) {
 
@@ -7,6 +7,7 @@ app.service('RegistrationService', ['$http', '$q', '$log', function ($http, $q, 
         $http.post('/user', user, {  headers: { 'Content-Type': 'application/json' } }
             ).success(function () {
                 deferred.resolve();
+                $window.location.href = "/login";
             }).error(function (data, status, headers, config) {
                 $log.log(data, status, headers, config);
                 deferred.reject();
