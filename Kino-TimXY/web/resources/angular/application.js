@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 var app = angular.module('Application', ['pascalprecht.translate','ngRoute', 'ngCookies', 'controllers', 'services']);
 
 app.config(function ($translateProvider, $routeProvider, $httpProvider) {
-=======
-var app = angular.module('Application', ['ngRoute', 'ngCookies', 'controllers', 'services','directives', 'pascalprecht.translate']);
-
-app.config(function ($routeProvider, $httpProvider, $translateProvider) {
->>>>>>> af47c496854401ba08e0003710a238f13f64872c
 
     $routeProvider
         .when('/', {
