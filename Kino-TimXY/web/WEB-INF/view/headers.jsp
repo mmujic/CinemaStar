@@ -36,6 +36,10 @@
     <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
 
+
+    <!-- reCAPTCHA -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
           href="resources/images/ico/apple-touch-icon-144-precomposed.png">
