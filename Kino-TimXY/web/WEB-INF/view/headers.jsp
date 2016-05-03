@@ -39,8 +39,6 @@
 
     <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
-    <script src="resources/angular/controllers.js" type="text/javascript"></script>
-    <script src="resources/angular/services.js" type="text/javascript"></script>
 
 
     <!-- reCAPTCHA -->

@@ -8,6 +8,10 @@
                             <li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
                             <li><a href=""><i class="fa fa-envelope"></i>${message}</a></li>
                         </ul>
+                        <ul ng-controller="LanguageController">
+                            <li><a href="" ng-click="changeLanguage('en')">EN</a>
+                            <li><a href="" ng-click="changeLanguage('bh')">BH</a>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
