@@ -119,6 +119,23 @@ public class UserController {
         }
     }
 
+    @RequestMapping( value = "/login", method = RequestMethod.POST)
+    public ResponseEntity checkLogin(@RequestBody User userCredentials) {
+
+        List<User> users = modelFactory
+                                .UserRepository()
+                                .findByUsername(userCredentials.getUsername());
+
+        HttpStatus httpStatus = isValidUser(userCredentials, users) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+
+        return new ResponseEntity("Check user login.", httpStatus);
+    }
+
+    private boolean isValidUser(User userCredentials, List<User> users) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        return users.size() == 1 && passwordEncoder.matches(userCredentials.getPassword(), users.get(0).getPassword());
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity update(@PathVariable("id") Integer id, @RequestBody User newUser) {
 
