@@ -22,10 +22,14 @@
     <script src='resources/static/angular/angular.js'></script>
     <script src='resources/static/angular/angular-route.js'></script>
     <script src='resources/static/angular/angular-cookies.js'></script>
+    <script type="text/javascript" src="resources/static/angular/angular-translate.min.js"></script>
+    <script type="text/javascript" src="resources/static/angular/angular-translate-loader-url.min.js"></script>
 
     <!-- Custom angular -->
 
     <script src="resources/angular/application.js" type="text/javascript"></script>
+    <script src="resources/angular/controllers.js" type="text/javascript"></script>
+    <script src="resources/angular/services.js" type="text/javascript"></script>
 
     <script src="resources/angular/home/homeService.js" type="text/javascript"></script>
     <script src="resources/angular/home/homeController.js" type="text/javascript"></script>
