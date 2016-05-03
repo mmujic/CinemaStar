@@ -22,6 +22,7 @@
     <script src='resources/static/angular/angular.js'></script>
     <script src='resources/static/angular/angular-route.js'></script>
     <script src='resources/static/angular/angular-cookies.js'></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
 
     <!-- Custom angular -->
 
@@ -35,6 +36,8 @@
 
     <script src="resources/angular/registration/registrationService.js" type="text/javascript"></script>
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
+    <script src="resources/angular/controllers.js" type="text/javascript"></script>
+    <script src="resources/angular/services.js" type="text/javascript"></script>
 
     <link rel="shortcut icon" href="resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"

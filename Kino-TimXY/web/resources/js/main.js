@@ -4,8 +4,8 @@
 
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};	
-		
+	};
+
 /*scroll to top*/
 
 $(document).ready(function(){
@@ -27,4 +27,13 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
+});
+
+var kinoapp = angular.module('kino', ['controllers', 'services','directives', 'pascalprecht.translate']);
+
+kinoapp.config(function ($translateProvider) {
+	$translateProvider.useUrlLoader('/messageBundle');
+	$translateProvider.useStorage('UrlLanguageStorage');
+	$translateProvider.preferredLanguage('en');
+	$translateProvider.fallbackLanguage('en');
 });

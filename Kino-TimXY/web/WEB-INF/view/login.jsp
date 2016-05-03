@@ -36,7 +36,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
-                    <h2>New User Signup!</h2>
+                    <h2>New User Registration!</h2>
 
                     <form action="/index" method="POST">
                         <input name= 'username' type="text" placeholder="Name"/>

@@ -1,6 +1,6 @@
-var app = angular.module('Application', ['ngRoute', 'ngCookies']);
+var app = angular.module('Application', ['ngRoute', 'ngCookies', 'controllers', 'services','directives', 'pascalprecht.translate']);
 
-app.config(function ($routeProvider, $httpProvider) {
+app.config(function ($routeProvider, $httpProvider, $translateProvider) {
 
     $routeProvider
         .when('/', {
@@ -20,5 +20,11 @@ app.config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.headers.post = {"Content-Type": "application/json;charset=utf-8"};
     $httpProvider.defaults.xsrfCookieName = 'XSRF-TOKEN';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-Token';
+
+
+    $translateProvider.useUrlLoader('/messageBundle');
+    $translateProvider.useStorage('UrlLanguageStorage');
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.fallbackLanguage('en');
 
 });
