@@ -10,7 +10,8 @@ app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService
             username: "",
             password: "",
             enabled: false,
-            role: "ROLE_USER"
+            role: "ROLE_USER",
+            recaptcha: ""
         };
 
         $scope.invalidAddress = true;
@@ -117,6 +118,7 @@ app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService
                 $scope.user.name = angular.element(fullName).val();
                 $scope.user.username = angular.element(username).val();
                 $scope.user.password = angular.element(password).val();
+                $scope.user.recaptcha = grecaptcha.getResponse()
                 RegistrationService.createNewUser($scope.user);
                 //$scope.cleanDialog();
             }

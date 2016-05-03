@@ -1,11 +1,14 @@
 package kino.controller;
 
+import kino.model.ReCaptcha;
+import kino.model.UserResponseWrapper;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
 import kino.model.validation.UserValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.User;
 import kino.model.presentation.UserViewModel;
+import kino.utils.ReCaptchaHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -17,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,11 +79,24 @@ public class UserController {
     }
 
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity add(@RequestBody User user) {
+    public ResponseEntity add(@RequestBody UserResponseWrapper userResponseWrapper) {
+
+        User user = userResponseWrapper.user();
 
         if(UserValidator.isInvalidUser(user)) {
             logger.error("User creation failed. Invalid user params.");
             return new ResponseEntity(ErrorGenerator.generateError("User creation failed. Invalid user params."), HttpStatus.BAD_REQUEST);
+        }
+
+        ReCaptcha reCaptcha;
+        try {
+            reCaptcha = ReCaptchaHttpRequest.post(userResponseWrapper.getRecaptcha());
+        } catch (IOException e) {
+            logger.error("ReCaptcha failed.", e);
+            return new ResponseEntity(ErrorGenerator.generateError("ReCaptcha failed."), HttpStatus.FORBIDDEN);
+        }
+        if(reCaptcha.failed()) {
+            return new ResponseEntity(ErrorGenerator.generateError("ReCaptcha failed. You might be a robot."), HttpStatus.FORBIDDEN);
         }
 
         try {
