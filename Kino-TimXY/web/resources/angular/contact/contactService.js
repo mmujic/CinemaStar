@@ -4,7 +4,7 @@ app.service('ContactService', ['$http', '$q', '$log', function ($http, $q, $log)
 
         var deferred = $q.defer();
 
-        $http.post('/contact', contact, {  headers: { 'Content-Type': 'application/json' } }
+        $http.post('/contactUs', contact, {  headers: { 'Content-Type': 'application/json' } }
         ).success(function () {
                 deferred.resolve();
                 $window.location.href = "/#/index";

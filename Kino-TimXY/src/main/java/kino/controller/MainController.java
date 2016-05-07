@@ -39,11 +39,11 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = "/contact",method = RequestMethod.POST)
+    @RequestMapping(value = "/contactUs",method = RequestMethod.POST)
     public ResponseEntity contactUs(@RequestBody Contact contact){
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
         MailService mailService = applicationContext.getBean(MailService.class);
-        mailService.sendMail(contact.getEmail(),"ilvana_brankovic@hotmail.com",contact.getSubject(),contact.getMessage());
+        mailService.sendMail(contact.getEmail(),"cinema.nwt@gmail.com",contact.getSubject(),contact.getMessage());
         return new ResponseEntity(contact, HttpStatus.OK);
     }
     @RequestMapping(value = "/403", method = RequestMethod.GET)
