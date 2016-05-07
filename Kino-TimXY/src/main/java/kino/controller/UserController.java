@@ -1,20 +1,26 @@
 package kino.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import kino.configuration.BeanConfiguration;
 import kino.model.ReCaptcha;
 import kino.model.UserResponseWrapper;
+import kino.model.entities.VerificationToken;
+import kino.service.VerificationTokenService;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
 import kino.model.validation.UserValidator;
 import kino.model.ModelFactory;
 import kino.model.entities.User;
 import kino.model.presentation.UserViewModel;
+import kino.service.MailService;
 import kino.utils.ReCaptchaHttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -78,6 +84,28 @@ public class UserController {
         }
     }
 
+    @RequestMapping(value = "/registration/{token}", method = RequestMethod.GET)
+    public ResponseEntity getUser(@PathVariable("token") String token) {
+        List<VerificationToken> verificationTokens = ModelFactory
+                                                        .getInstance()
+                                                        .VerificationTokenRepository()
+                                                        .findByToken(token);
+
+        if(verificationTokens.size()==1) {
+            VerificationToken verificationToken = verificationTokens.get(0);
+            User user = ModelFactory.getInstance().UserRepository().findOne(verificationToken.getUser().getId());
+            user.setEnable(true);
+
+            ModelFactory.getInstance().UserRepository().saveAndFlush(user);
+
+            return new ResponseEntity("Registration confirmation success.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Registration confirmation failure.", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+
+    }
+
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody UserResponseWrapper userResponseWrapper) {
 
@@ -104,9 +132,18 @@ public class UserController {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = modelFactory.UserRepository().saveAndFlush(user);
             UserViewModel userViewModel = new UserViewModel(savedUser);
-            logger.info(String.format("User successfuly created. User ID: %d", user.getId()));
-            //TODO
-            //Send verification email
+            logger.info(String.format("User successfully created. User ID: %d", user.getId()));
+
+            ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+
+            VerificationTokenService verificationTokenService = applicationContext.getBean(VerificationTokenService.class);
+            MailService mailService = applicationContext.getBean(MailService.class);
+
+            String url = String.format("localhost:8080/user/registration/%s", verificationTokenService.createToken(savedUser));
+            String message = String.format("Please visit %s to complete your registration.", url);
+
+            mailService.sendMail("no-reply@cinema-nwt.com", savedUser.getEmail(), "Registration confirmation", message);
+
             return new ResponseEntity(userViewModel, HttpStatus.OK);
         } catch (NullPointerException e) {
             logger.error("Failed to create user.", e);

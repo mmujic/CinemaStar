@@ -18,9 +18,10 @@
         <mysql-connector.version>5.1.37</mysql-connector.version>
         <eclipselink.version>2.5.0</eclipselink.version>
         <jackson.version>2.7.3</jackson.version>
-        <javax.mail.version>1.5.5</javax.mail.version>
+        <javax.mail.version>1.4</javax.mail.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <apache.common.version>1.10</apache.common.version>
+        <spring.context.support.version>4.2.5.RELEASE</spring.context.support.version>
     </properties>
 
     <dependencies>
@@ -149,9 +150,17 @@
         -->
         <dependency>
             <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
+            <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.context.support.version}</version>
+        </dependency>
+
         <!--
         /Javax mail
         -->
