@@ -1,6 +1,5 @@
 package kino.configuration;
 
-import kino.model.entities.ResetToken;
 import kino.service.ResetTokenService;
 import kino.service.VerificationTokenService;
 import kino.service.MailService;
