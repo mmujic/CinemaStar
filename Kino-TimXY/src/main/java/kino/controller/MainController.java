@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -39,7 +40,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/contact",method = RequestMethod.POST)
-    public ResponseEntity contactUs(Contact contact){
+    public ResponseEntity contactUs(@RequestBody Contact contact){
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
         MailService mailService = applicationContext.getBean(MailService.class);
         mailService.sendMail(contact.getEmail(),"ilvana_brankovic@hotmail.com",contact.getSubject(),contact.getMessage());

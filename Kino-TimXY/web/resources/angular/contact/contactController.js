@@ -1,7 +1,7 @@
 app.controller("ContactController", ['$scope', '$filter', '$log', "ContactService", "$window",
     function ($scope, $filter, $log, ContactService, $window) {
         $scope.contact={
-            name:"",
+            clientName:"",
             email:"",
             subject:"",
             message:""
@@ -73,7 +73,7 @@ app.controller("ContactController", ['$scope', '$filter', '$log', "ContactServic
                 angular.element(messageWrapper).addClass("has-error");
                 angular.element(message)[0].focus();
             }else {
-                $scope.contact.name=angular.element(clientName).val();
+                $scope.contact.clientName=angular.element(clientName).val();
                 $scope.contact.email=angular.element(email).val();
                 $scope.contact.subject=angular.element(subject).val();
                 $scope.contact.message=angular.element(message).val();
