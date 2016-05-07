@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
@@ -40,10 +41,11 @@ public class MainController {
     }
 
     @RequestMapping(value = "/contactUs",method = RequestMethod.POST)
+    @ResponseBody
     public ResponseEntity contactUs(@RequestBody Contact contact){
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
         MailService mailService = applicationContext.getBean(MailService.class);
-        mailService.sendMail(contact.getEmail(),"cinema.nwt@gmail.com",contact.getSubject(),contact.getMessage());
+        mailService.sendMail(contact.getEmail(),"mujic-m@hotmail.com",contact.getSubject(),contact.getMessage());
         return new ResponseEntity(contact, HttpStatus.OK);
     }
     @RequestMapping(value = "/403", method = RequestMethod.GET)
