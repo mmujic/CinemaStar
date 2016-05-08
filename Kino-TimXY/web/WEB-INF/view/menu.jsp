@@ -9,8 +9,8 @@
                             <%--<li><a href=""><i class="fa fa-envelope"></i>${message}</a></li>--%>
                         <%--</ul>--%>
                         <ul ng-controller="LanguageController">
-                            <li><a href="" ng-click="changeLanguage('en')">EN</a></li>
-                            <li><a href="" ng-click="changeLanguage('bh')">BH</a></li>
+                            <li><img width="18px" src="resources/images/home/uk_flag.ico"><a href="" ng-click="changeLanguage('en')">EN</a></li>
+                            <li><img width="18px" src="resources/images/home/bih_flag.png"><a href="" ng-click="changeLanguage('bh')">BH</a></li>
                         </ul>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/#/"><img width="100px" src="resources/images/home/logo2.png" alt=""/></a>
+                        <a href="/#/"><img width="180px" src="resources/images/home/logo.png" alt=""/></a>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -49,7 +49,7 @@
                                        role="button"><i class="fa fa-lock"></i>Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ROLE_USER')">
-                                <li><a href="/#/registration"><i class="fa fa-lock"></i> <i translate>menu.registration.title.label</i></a></li>
+                                <li><a href="/#/registration"><i class="fa fa-plus-circle"></i> <i translate>menu.registration.title.label</i></a></li>
                             </sec:authorize>
                         </ul>
                     </div>
@@ -73,7 +73,7 @@
                         </button>
                     </div>
                     <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
+                        <ul style="padding-top: 8px" class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="/#/" translate>menu.home.title.label</a></li>
                             <li><a href="/#/announcements" translate>menu.announcements.title.label</a></li>
                             <li><a href="/#/special_offers" translate>menu.specialOffers.title.label</a></li>
@@ -88,12 +88,12 @@
                                     <%--<li><a href="/login" class="active">Login</a></li>--%>
                                 <%--</ul>--%>
                             <%--</li>--%>
-                            <%--<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--%>
-                                <%--<ul role="menu" class="sub-menu">--%>
-                                    <%--<li><a href="blog.html">Blog List</a></li>--%>
-                                    <%--<li><a href="blog-single.html">Blog Single</a></li>--%>
-                                <%--</ul>--%>
-                            <%--</li>--%>
+                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="blog.html">Blog List</a></li>
+                                    <li><a href="blog-single.html">Blog Single</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
