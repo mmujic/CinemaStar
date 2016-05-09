@@ -110,6 +110,8 @@ public class MovieController {
             movie.setName(newMovie.getName());
             movie.setDescription(newMovie.getDescription());
             movie.setDuration(newMovie.getDuration());
+            movie.setDirector(newMovie.getDirector());
+            movie.setGenre(newMovie.getGenre());
 
             modelFactory.MovieRepository().save(movie);
             logger.info(String.format("Movie with ID: %d successfully updated.", movie.getId()));

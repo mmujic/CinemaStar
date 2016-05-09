@@ -25,6 +25,8 @@ app.service('HomeService', ['$http', '$q', '$log', function ($http, $q, $log) {
 
         return deferred.promise;
     };
+
+
     this.createMovie = function() {
         var deferred = $q.defer();
         var movie = {

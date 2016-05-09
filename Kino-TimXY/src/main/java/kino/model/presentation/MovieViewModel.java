@@ -11,11 +11,33 @@ public class MovieViewModel {
 
     private Integer duration;
 
+    private String director;
+
+    private String genre;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
     public MovieViewModel(Movie movie) {
         id=movie.getId();
         name=movie.getName();
         description=movie.getDescription();
         duration=movie.getDuration();
+        director=movie.getDirector();
+        genre=movie.getGenre();
     }
 
     public Integer getId() {
