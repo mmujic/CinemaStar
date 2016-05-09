@@ -94,9 +94,9 @@ public class Movie {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", director='" + director + '\'' +
+                ", genre='" + genre + '\'' +
                 ", duration=" + duration +
-                ", duration=" + director +
-                ", duration=" + genre +
                 '}';
     }
 }
