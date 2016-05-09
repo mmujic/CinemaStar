@@ -20,16 +20,40 @@ public class Movie {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "director")
+    private String director;
+
+    @Column(name = "genre")
+    private String genre;
+
     @Column(name = "duration")
     private Integer duration;
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
 
     public Movie() {
     }
 
-    public Movie(String name, String description, Integer duration) {
+    public Movie(String name, String description, Integer duration, String director, String genre) {
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.director = director;
+        this.genre = genre;
     }
 
     public Integer getId() {
@@ -71,6 +95,8 @@ public class Movie {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", duration=" + duration +
+                ", duration=" + director +
+                ", duration=" + genre +
                 '}';
     }
 }

@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/index"><img src="resources/images/home/logo.png" alt=""/></a>
+                        <a href="#"><img src="resources/images/home/logo.png" alt=""/></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
