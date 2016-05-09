@@ -38,16 +38,16 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="/#/contact"><i class="fa fa-user"></i><i translate>menu.contact.title.label</i></a></li>
+                            <li><a href="/#/contact"><i class="fa fa-user"></i><span translate>menu.contact.title.label</span></a></li>
                             <sec:authorize access="!hasRole('ROLE_USER')">
-                                <li><a href="/#/login" class="active"><i class="fa fa-lock"></i><i translate>menu.login.title.label</i></a></li>
+                                <li><a href="/#/login"><i class="fa fa-lock"></i><span translate>menu.login.title.label</span></a></li>
                             </sec:authorize>
                             <sec:authorize access="hasRole('ROLE_USER')">
                                 <li><a href="#" onclick="document.getElementById('logoutForm').submit();"
                                        role="button"><i class="fa fa-lock"></i>Logout</a></li>
                             </sec:authorize>
                             <sec:authorize access="!hasRole('ROLE_USER')">
-                                <li><a href="/#/registration"><i class="fa fa-plus-circle"></i> <i translate>menu.registration.title.label</i></a></li>
+                                <li><a href="/#/registration"><i class="fa fa-plus-circle"></i> <span translate>menu.registration.title.label</span></a></li>
                             </sec:authorize>
                         </ul>
                     </div>
