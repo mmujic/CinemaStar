@@ -89,7 +89,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration/{token}", method = RequestMethod.GET)
-    public void getUser(@PathVariable("token") String token, HttpServletResponse response) {
+    public void verifyRegistration(@PathVariable("token") String token, HttpServletResponse response) {
         List<VerificationToken> verificationTokens = ModelFactory
                                                         .getInstance()
                                                         .VerificationTokenRepository()

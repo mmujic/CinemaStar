@@ -1,5 +1,5 @@
-app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService',
-    function ($scope, $log, RegistrationService) {
+app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService', '$window',
+    function ($scope, $log, RegistrationService, $window) {
 
         $scope.user = {
             address: "",
@@ -136,6 +136,7 @@ app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService
                 RegistrationService.createNewUser($scope.user).then(
                     function() {
                         $log.info("Registration success.");
+                        $window.location.href = "/#/login/confirm";
                     },
                     function() {
                         $scope.error=true;
