@@ -79,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `description` varchar(255) DEFAULT NULL,
   `duration` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
+  `director` varchar(255) DEFAULT NULL,
+  `genre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
