@@ -5,13 +5,11 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="contactinfo">
-                        <%--<ul class="nav nav-pills">--%>
-                            <%--<li><a href=""><i class="fa fa-envelope"></i>${message}</a></li>--%>
-                        <%--</ul>--%>
-                        <ul ng-controller="LanguageController">
-                            <li><img width="18px" src="resources/images/home/uk_flag.ico"><a href="" ng-click="changeLanguage('en')">EN</a></li>
-                            <li><img width="18px" src="resources/images/home/bih_flag.png"><a href="" ng-click="changeLanguage('bh')">BH</a></li>
-                        </ul>
+                        <div ng-controller="LanguageController" style="padding-top: 10px;">
+                            <a href="" ng-click="changeLanguage('en')"><img width="18px" src="resources/images/home/uk_flag.ico">EN</a>
+                            &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="" ng-click="changeLanguage('bh')"><img width="18px" src="resources/images/home/bih_flag.png">BH</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -79,15 +77,6 @@
                             <li><a href="/#/special_offers" translate>menu.specialOffers.title.label</a></li>
                             <li><a href="/#/about_us" translate>menu.aboutUs.title.label</a></li>
                             <li><a href="/#/contact" translate>menu.contact.title.label</a></li>
-                            <%--<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--%>
-                                <%--<ul role="menu" class="sub-menu">--%>
-                                    <%--<li><a href="shop.html">Products</a></li>--%>
-                                    <%--<li><a href="product-details.html">Product Details</a></li>--%>
-                                    <%--<li><a href="checkout.html">Checkout</a></li>--%>
-                                    <%--<li><a href="cart.html">Cart</a></li>--%>
-                                    <%--<li><a href="/login" class="active">Login</a></li>--%>
-                                <%--</ul>--%>
-                            <%--</li>--%>
                             <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="blog.html">Blog List</a></li>
