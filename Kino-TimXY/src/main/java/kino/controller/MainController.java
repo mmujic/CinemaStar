@@ -59,4 +59,9 @@ public class MainController {
     public String accessDenied() {
         return "403Page";
     }
+
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public String notFound() {
+        return "404";
+    }
 }

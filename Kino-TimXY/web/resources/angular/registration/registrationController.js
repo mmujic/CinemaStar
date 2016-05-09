@@ -14,6 +14,13 @@ app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService
             recaptcha: ""
         };
 
+        $scope.error = false;
+        $scope.errorMessage = "Registration failed. Wrong parameters.";
+
+        grecaptcha.render('recaptcha', {
+            'sitekey' : '6Le89x4TAAAAAMugrzia5v1kHjD9BgBVUILXF9VW'
+        });
+
         $scope.invalidAddress = true;
 
         $scope.validateAddress = function () {
@@ -96,37 +103,45 @@ app.controller("RegistrationController", ['$scope', '$log', 'RegistrationService
             if ($scope.invalidName) {
                 angular.element(fullNameWrapper).addClass("has-error");
                 angular.element(fullName)[0].focus();
+                $scope.error = true;
             } else if ($scope.invalidEmail) {
-              angular.element(emailWrapper).addClass("has-error");
-              angular.element(email)[0].focus();
+                angular.element(emailWrapper).addClass("has-error");
+                angular.element(email)[0].focus();
+                $scope.error = true;
             } else if ($scope.invalidAddress) {
                 angular.element(addressWrapper).addClass("has-error");
                 angular.element(address)[0].focus();
+                $scope.error = true;
             } else if ($scope.invalidPhone) {
                 angular.element(phoneWrapper).addClass("has-error");
                 angular.element(phone)[0].focus();
+                $scope.error = true;
             } else if ($scope.invalidUsername) {
                 angular.element(usernameWrapper).addClass("has-error");
                 angular.element(username)[0].focus();
+                $scope.error = true;
             } else if ($scope.invalidPassword) {
                 angular.element(passwordWrapper).addClass("has-error");
                 angular.element(password)[0].focus();
+                $scope.error = true;
             } else {
+                $scope.error = false;
                 $scope.user.address = angular.element(address).val();
                 $scope.user.number = angular.element(phone).val();
                 $scope.user.email = angular.element(email).val();
                 $scope.user.name = angular.element(fullName).val();
                 $scope.user.username = angular.element(username).val();
                 $scope.user.password = angular.element(password).val();
-                $scope.user.recaptcha = grecaptcha.getResponse()
-                RegistrationService.createNewUser($scope.user);
-                //$scope.cleanDialog();
+                $scope.user.recaptcha = grecaptcha.getResponse();
+                RegistrationService.createNewUser($scope.user).then(
+                    function() {
+                        $log.info("Registration success.");
+                    },
+                    function() {
+                        $scope.error=true;
+                        $scope.errorMessage="Registration failed. You might be a robot. Whoa!";
+                    }
+                );
             }
         };
-
-        $scope.cleanDialog = function () {
-            angular.element(address).removeClass("has-error");
-            angular.element(address).val("");
-        };
-
     }]);
