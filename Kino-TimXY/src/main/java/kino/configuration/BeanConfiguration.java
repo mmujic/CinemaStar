@@ -1,5 +1,6 @@
 package kino.configuration;
 
+import kino.service.ResetTokenService;
 import kino.service.VerificationTokenService;
 import kino.service.MailService;
 import org.springframework.context.annotation.Bean;
@@ -37,5 +38,10 @@ public class BeanConfiguration {
     @Bean
     public VerificationTokenService VerificationTokenService() {
         return new VerificationTokenService();
+    }
+
+    @Bean
+    public ResetTokenService ResetTokenService() {
+        return new ResetTokenService();
     }
 }
