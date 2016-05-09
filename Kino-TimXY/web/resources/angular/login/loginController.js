@@ -27,4 +27,8 @@ app.controller("LoginController", ['$scope', '$log', '$window', '$http',
                     return;
                 });
         }
+
+        $scope.forgotPassword = function(){
+            $window.location.href = "/#/reset";
+        }
     }]);

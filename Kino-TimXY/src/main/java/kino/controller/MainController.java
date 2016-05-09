@@ -1,9 +1,19 @@
 package kino.controller;
 
+import kino.configuration.BeanConfiguration;
+import kino.model.entities.Contact;
+import kino.service.MailService;
+import kino.utils.ErrorGenerator;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
@@ -29,6 +39,20 @@ public class MainController {
         String userName = principal.getName();
         model.addAttribute("message", "Welcome " + userName);
         return "index";
+    }
+
+    @RequestMapping(value = "/contactUs",method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity contactUs(@RequestBody Contact contact){
+        try {
+            ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+            MailService mailService = applicationContext.getBean(MailService.class);
+            mailService.sendMail(contact.getEmail(), "mujic-m@hotmail.com", contact.getSubject(), contact.getMessage());
+            return new ResponseEntity(contact, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity(ErrorGenerator.generateError("Error happened during sending mail."), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
