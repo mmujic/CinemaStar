@@ -4,7 +4,10 @@ import com.sun.org.apache.xpath.internal.operations.Mod;
 import kino.configuration.BeanConfiguration;
 import kino.model.ReCaptcha;
 import kino.model.UserResponseWrapper;
+import kino.model.entities.ResetToken;
 import kino.model.entities.VerificationToken;
+import kino.model.validation.CommonValidators;
+import kino.service.ResetTokenService;
 import kino.service.VerificationTokenService;
 import kino.utils.ErrorGenerator;
 import kino.utils.JsonMessageGenerator;
@@ -105,6 +108,27 @@ public class UserController {
 
 
     }
+    @RequestMapping(value = "/newPassword/{token}", method = RequestMethod.POST)
+    public ResponseEntity createNewPassword(@PathVariable("token") String token, @RequestBody String password) {
+        List<ResetToken> resetTokens = ModelFactory
+                                            .getInstance()
+                                            .ResetTokenRepository()
+                                            .findByToken(token);
+
+        if(resetTokens.size()==1) {
+            ResetToken resetToken = resetTokens.get(0);
+            User user = ModelFactory.getInstance().UserRepository().findOne(resetToken.getUser().getId());
+
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            user.setPassword(passwordEncoder.encode(password));
+
+            ModelFactory.getInstance().UserRepository().saveAndFlush(user);
+
+            return new ResponseEntity("Password reset success.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Password reset failure.", HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
 
     @RequestMapping( method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity add(@RequestBody UserResponseWrapper userResponseWrapper) {
@@ -154,6 +178,37 @@ public class UserController {
             logger.error("Error occurred: ", e);
             return new ResponseEntity(ErrorGenerator.generateError("User wasn't successfully added"), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping( value = "/reset", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity reset(@RequestBody String email) {
+
+        if(!CommonValidators.isValidEmail(email)) {
+            logger.error("Password reset failed. Wrong email format.");
+            return new ResponseEntity(ErrorGenerator.generateError("Password reset failed. Wrong email format."), HttpStatus.BAD_REQUEST);
+        }
+
+        List<User> users = modelFactory.UserRepository().findByEmail(email);
+
+        if(users.size() != 1) {
+            logger.error("Password reset failed. User with given email doesn't exist.");
+            logger.error(String.format("Email: %s", email));
+            return new ResponseEntity(ErrorGenerator.generateError("Password reset failed. User with given email doesn't exist."), HttpStatus.NOT_FOUND);
+        }
+
+        User user = users.get(0);
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);
+
+        ResetTokenService resetTokenService = applicationContext.getBean(ResetTokenService.class);
+        MailService mailService = applicationContext.getBean(MailService.class);
+
+        String url = String.format("localhost:8080/#/newPassword/%s", resetTokenService.createToken(user));
+        String message = String.format("Please visit %s to reset your password.", url);
+
+        mailService.sendMail("no-reply@cinema-nwt.com", user.getEmail(), "Password reset", message);
+
+        return new ResponseEntity(JsonMessageGenerator.generateMessage("Requested new password", "true"), HttpStatus.OK);
     }
 
     @RequestMapping( value = "/login", method = RequestMethod.POST)

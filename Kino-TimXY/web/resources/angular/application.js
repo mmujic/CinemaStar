@@ -15,6 +15,14 @@ app.config(function ($translateProvider, $routeProvider, $httpProvider) {
             templateUrl: '/resources/angular/login/login.html',
             controller: 'LoginController'
         })
+        .when('/reset', {
+            templateUrl: '/resources/angular/reset/reset.html',
+            controller: 'ResetController'
+        })
+        .when('/newPassword/:token', {
+            templateUrl: '/resources/angular/newPassword/newPassword.html',
+            controller: 'NewPasswordController'
+        })
         .when('/registration', {
             templateUrl: '/resources/angular/registration/registration.html',
             controller: 'RegistrationController'

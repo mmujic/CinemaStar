@@ -15,6 +15,7 @@ public class ModelFactory {
     private final TicketRepository ticketRepository;
     private  final MovieRepository movieRepository;
     private  final VerificationTokenRepository verificationTokenRepository;
+    private  final ResetTokenRepository resetTokenRepository;
 
     private ModelFactory() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(PersistenceConfiguration.class);
@@ -26,6 +27,7 @@ public class ModelFactory {
         ticketRepository = applicationContext.getBean(TicketRepository.class);
         movieRepository = applicationContext.getBean(MovieRepository.class);
         verificationTokenRepository = applicationContext.getBean(VerificationTokenRepository.class);
+        resetTokenRepository = applicationContext.getBean(ResetTokenRepository.class);
     }
 
     public static ModelFactory getInstance() {
@@ -62,5 +64,9 @@ public class ModelFactory {
 
     public VerificationTokenRepository VerificationTokenRepository(){
         return verificationTokenRepository;
+    }
+
+    public ResetTokenRepository ResetTokenRepository(){
+        return resetTokenRepository;
     }
 }

@@ -41,6 +41,8 @@
     <script src="resources/angular/registration/registrationController.js" type="text/javascript"></script>
 
     <script src="resources/angular/login/loginController.js" type="text/javascript"></script>
+    <script src="resources/angular/reset/resetController.js" type="text/javascript"></script>
+    <script src="resources/angular/newPassword/newPasswordController.js" type="text/javascript"></script>
 
 
     <!-- reCAPTCHA -->
