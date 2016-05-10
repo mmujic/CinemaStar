@@ -29,6 +29,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +89,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration/{token}", method = RequestMethod.GET)
-    public ResponseEntity getUser(@PathVariable("token") String token) {
+    public void verifyRegistration(@PathVariable("token") String token, HttpServletResponse response) {
         List<VerificationToken> verificationTokens = ModelFactory
                                                         .getInstance()
                                                         .VerificationTokenRepository()
@@ -101,9 +102,17 @@ public class UserController {
 
             ModelFactory.getInstance().UserRepository().saveAndFlush(user);
 
-            return new ResponseEntity("Registration confirmation success.", HttpStatus.OK);
+            try {
+                response.sendRedirect("/#/login");
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
         } else {
-            return new ResponseEntity("Registration confirmation failure.", HttpStatus.NOT_ACCEPTABLE);
+            try {
+                response.sendRedirect("/404");
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
         }
 
 

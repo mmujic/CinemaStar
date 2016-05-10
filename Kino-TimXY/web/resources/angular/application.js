@@ -15,6 +15,10 @@ app.config(function ($translateProvider, $routeProvider, $httpProvider) {
             templateUrl: '/resources/angular/login/login.html',
             controller: 'LoginController'
         })
+        .when('/login/:confirm', {
+            templateUrl: '/resources/angular/login/login.html',
+            controller: 'LoginController'
+        })
         .when('/reset', {
             templateUrl: '/resources/angular/reset/reset.html',
             controller: 'ResetController'

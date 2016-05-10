@@ -1,9 +1,10 @@
-app.controller("LoginController", ['$scope', '$log', '$window', '$http',
-    function ($scope, $log, $window, $http) {
+app.controller("LoginController", ['$scope', '$routeParams', '$log', '$window', '$http',
+    function ($scope, $routeParams, $log, $window, $http) {
 
         $scope.csrfValue = $window.document.getElementsByName('_csrf')[0].content;
 
         $scope.error = false;
+        $scope.confirm = ($routeParams.confirm != null && $routeParams.confirm == 'confirm');
 
         $scope.user = {
             username: "",
